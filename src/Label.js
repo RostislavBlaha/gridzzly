@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Label extends Component{
  
   render() {
-    const rotate =  this.props.type==="inches" ? "transform: rotateY(180deg)" : ""
+    const rotate =  "rotateY(180deg)"
 	  const sx = {
         fontFamily: "arial",
         fontSize: "14px",
@@ -14,6 +14,7 @@ export default class Label extends Component{
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        //transform: this.props.type==="inches" ? rotate : ""
 	  }
     
 
@@ -21,11 +22,11 @@ export default class Label extends Component{
     
     
     const unitType = this.props.type==="centimeters" ? "CENTIMETERS" : "INCHES"
-	  console.log(sx)
+	  console.log(rotate)
     return (
         <div style={sx}>
-            <span style={rotate}></span> {rotate}.rotate">{unitType}</span>
-            <span style={rotate}>{unitType}</span>
+            <span>{unitType}</span>
+            <span>{unitType}</span>
         </div>
 	   )
   }
