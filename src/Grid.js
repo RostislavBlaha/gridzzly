@@ -25,7 +25,6 @@ export default class Grid extends Component{
                     grid[grid.length] = c
                     posX += (distance-size)
             }
-            console.log("radek")
             posX = size
             posY += distance       
         }
