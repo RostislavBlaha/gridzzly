@@ -13,7 +13,7 @@ export default class Label extends Component{
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        transform: this.props.type==="inches" ? "rotateY(180deg)" : "none"
+        //transform: this.props.type==="inches" ? "rotateY(180deg)" : ""
 	  }
     
     const unitType = this.props.type==="centimeters" ? "CENTIMETERS" : "INCHES"
