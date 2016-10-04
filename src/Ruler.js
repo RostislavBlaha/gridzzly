@@ -24,7 +24,7 @@ export default class Ruler extends Component{
         perspective: "10px",
         animationTimingFunction: "ease-in-out",
         transition: "0.6s",
-	      transformStyle: "preserve-3d",
+	    transformStyle: "preserve-3d",
         cursor: "pointer",
         zIndex: "1"
 	  }
