@@ -25,7 +25,8 @@ export default class Ruler extends Component{
         animationTimingFunction: "ease-in-out",
         transition: "0.6s",
 	      transformStyle: "preserve-3d",
-        cursor: "pointer"
+        cursor: "pointer",
+        zIndex: "1"
 	  }
     
     return (

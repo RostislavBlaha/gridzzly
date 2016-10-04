@@ -7,7 +7,7 @@ export default class Grid extends Component{
     }
 	
 	componentDidMount(){
-        this.setState({grid: this.drawSquareGrid(5, 210, 297, "silver")})
+        this.setState({grid: this.drawSquareGrid(20, window.innerWidth, window.innerHeight, "silver")})
     }
 	
 	drawSquareGrid(distance, width, height, colour){
@@ -21,7 +21,7 @@ export default class Grid extends Component{
         
         for (let k = 0; k < verticalLength+1; k++) { 
             for (let i = 0; i < horizontalLength+1; i++) { 
-                var c = <circle  key={grid.length}  cx={posX + "mm"} cy={posY + "mm"} r={size + "mm"} fill={colour}/>
+                var c = <circle  key={grid.length}  cx={posX} cy={posY} r={size + "mm"} fill={colour}/>
                     grid[grid.length] = c
                     posX += (distance-size)
             }
@@ -34,10 +34,13 @@ export default class Grid extends Component{
     }
  
   render() {
+    const sx = {overflow: "hidden"}
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight - 105
   	var grid = this.state.grid
     return (
-	 	<div>
-			<svg width="210mm" height="290mm">
+	 	<div style={sx}>
+			<svg width={windowWidth} height={windowHeight}>
 					{grid}
 			</svg>
 		</div>

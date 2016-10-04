@@ -17,9 +17,6 @@ class App extends Component {
 				height=""
 				distance=""
 				colour=""/>
-        <button onClick={this.printGrid.bind(this)}>
-            Print
-        </button>
       </div>
     )
   }
