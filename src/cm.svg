@@ -1,76 +1,62 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="35.433071"
-   height="25"
-   id="svg2">
-  <defs
-     id="defs3086" />
-  <metadata
-     id="metadata3089">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     transform="translate(1391,-30.362183)"
-     id="layer1">
-    <g
-       transform="translate(7.3939748,42.573678)"
-       id="g3161">
-      <path
-         d="m -1363.4924,-12.211895 0,25.0004"
-         id="rect2997"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1381.2091,-2.2119346 0,15.0004096"
-         id="path3772"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1377.6658,7.7880954 0,5.0004096"
-         id="path3774"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1374.1224,7.7880954 0,5.0004096"
-         id="path3776"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1370.5791,7.7880954 0,5.0004096"
-         id="path3778"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1367.0358,7.7880954 0,5.0004096"
-         id="path3780"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1395.3825,7.7880954 0,5.0004096"
-         id="path3782"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1391.8391,7.7880954 0,5.0004096"
-         id="path3784"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1388.2958,7.7880954 0,5.0004096"
-         id="path3786"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <path
-         d="m -1384.7525,7.7880954 0,5.0004096"
-         id="path3788"
-         style="opacity:0.55133081;color:#000000;fill:#917c6f;stroke:#241f1c;stroke-width:1.06299269;stroke-miterlimit:4;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    </g>
-  </g>
+<svg width="1cm" height="25px" viewPort="0 0 1cm 25px" xmlns="http://www.w3.org/2000/svg">
+    <line x1="9.9mm" 
+          y1="0" 
+          x2="9.9mm" 
+          y2="25px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="8.9mm" 
+          y1="25px" 
+          x2="8.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="7.9mm" 
+          y1="25px" 
+          x2="7.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="6.9mm" 
+          y1="25px" 
+          x2="6.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="5.9mm" 
+          y1="25px" 
+          x2="5.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="4.9mm" 
+          y1="25px" 
+          x2="4.9mm" 
+          y2="10px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="3.9mm" 
+          y1="25px" 
+          x2="3.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="2.9mm" 
+          y1="25px" 
+          x2="2.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="1.9mm" 
+          y1="25px" 
+          x2="1.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
+    <line x1="0.9mm" 
+          y1="25px" 
+          x2="0.9mm" 
+          y2="20px"
+          stroke-width="0.1mm" 
+          stroke="black"/>
 </svg>
