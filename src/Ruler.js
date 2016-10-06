@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Units from './Units'
 import Labels from "./Labels"
+import { colors, shadows } from './Styles'
 
 export default class Ruler extends Component{
   constructor(props) {
@@ -16,15 +17,15 @@ export default class Ruler extends Component{
 	  const sx = {
         width: "100%",
         height: "100px",
-        backgroundColor: "#ffd633",
+        backgroundColor: colors.yellow,
         display: "flex",
         flexDirection: "column",
-        boxShadow: this.state.orientation==="in" ? "0px -5px 5px #e9e9e9" : "0px 5px 5px #e9e9e9",
+        boxShadow: this.state.orientation==="in" ? shadows.top : shadows.bottom,
         transform: this.state.orientation==="in" ? "rotateX(180deg)" : "",
         perspective: "10px",
         animationTimingFunction: "ease-in-out",
         transition: "0.6s",
-	    transformStyle: "preserve-3d",
+	      transformStyle: "preserve-3d",
         cursor: "pointer",
         zIndex: "1"
 	  }

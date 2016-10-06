@@ -1,25 +1,23 @@
-export const white = '#fff'
-export const black = '#111'
-export const blue = '#07c'
+export const yellow = '#ffd633'
 
 export const colors = {
-  white,
-  black,
-  blue
+    yellow
 }
 
-export const space = [
-  0,
-  8,
-  16,
-  32,
-  64
-]
+export const shadows = {
+    top: '0px -2px 10px rgba(0, 0, 0, 0.2)',
+    bottom: '0px 2px 10px rgba(0, 0, 0, 0.2)'
+}
+
+export const radius = '4px'
+
+
 
 const styles = {
-  bold: 600,
-  space,
-  colors
+    colors,
+    shadows,
+    radius
 }
+
 
 export default styles

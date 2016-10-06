@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Grid from './Grid'
 import Ruler from './Ruler'
+import Form from './Form'
 
 class App extends Component {
     
@@ -10,13 +11,19 @@ class App extends Component {
     
     
   render() {
+    const sx = {
+        display: "flex",
+        flexDirection: "column",
+	  }
+    
     return (
-      <div className="App">
-		<Ruler/>
-		<Grid 	width=""
-				height=""
-				distance=""
-				colour=""/>
+      <div  className="App"
+            style={sx}>
+        <Ruler/>
+        <Form/>
+        <Grid 	distance={5}
+                unit="cm"
+                colour="silver"/>
       </div>
     )
   }
