@@ -4,27 +4,21 @@ import Ruler from './ruler/Ruler'
 import Form from './form/Form'
 
 class App extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
-        try {
-            var json = JSON.parse(localStorage["data"])
-            var data = json.data
-        } catch(err) {
-            data = err
-        }
-        this.state = {  initialData: data,
-                        data: { type: "squareDot",
+        this.state = {  data: { type: "squareDot",
                                 distance: 5,
                                 unit: "mm",
                                 colour: "silver"
-                                }}  
+                                }
+                     }
     }
     
     changeDistance(distance){
        var newData = this.state.data
        newData.distance = distance
        this.setState({data:newData})
-       console.log(newData)
+       
     }
     
     printGrid(){

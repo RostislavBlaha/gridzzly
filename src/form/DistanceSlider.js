@@ -7,10 +7,16 @@ export default class DistanceSlider extends Component{
         this.handleChange = this.handleChange.bind(this)
     }
     
+    shouldComponentUpdate(nextProps, nextState) {
+      console.log("Update slider")
+      return this.state.value !== nextState.value
+    }
+
+    
     handleChange(evt){
         var value = evt.target.value
         this.setState({value: value})
-        this.props.changeDistance(value)
+        this.props.changeDistance(5)
     }
  
   render() {
