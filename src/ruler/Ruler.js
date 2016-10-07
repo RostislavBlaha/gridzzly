@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Units from './Units'
 import Labels from "./Labels"
-import { colors, shadows } from './Styles'
+import { colors, shadows } from '../Styles'
 
 export default class Ruler extends Component{
   constructor(props) {

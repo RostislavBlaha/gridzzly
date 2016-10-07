@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { shadows, radius } from './Styles'
+import { shadows, radius } from '../Styles'
+import DistanceSlider from './DistanceSlider'
 
 export default class Form extends Component{
  
   render() {
-    console.log(radius)
 	  const sx = {
         width: "480px",
         height: "400px",
@@ -21,6 +21,7 @@ export default class Form extends Component{
     
     return (
         <div style={sx}>
+            <DistanceSlider changeDistance={this.props.changeDistance}/>
         </div>
 	   )
   }

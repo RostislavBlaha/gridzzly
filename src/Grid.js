@@ -9,6 +9,10 @@ export default class Grid extends Component{
 	componentDidMount(){
         this.setState({grid: this.drawSquareGrid(this.props.distance, this.props.unit, this.props.colour)})
     }
+    
+componentWillReceiveProps(nextProps) {
+        this.setState({grid: this.drawSquareGrid(this.props.distance, this.props.unit, this.props.colour)})
+}
 	
 	drawSquareGrid(distance, unit, colour){
         var horizontalLength = Math.floor(window.innerWidth/distance)
@@ -21,7 +25,7 @@ export default class Grid extends Component{
         
         for (let k = 0; k < verticalLength+1; k++) { 
             for (let i = 0; i < horizontalLength+1; i++) { 
-                var c = <circle  key={grid.length}  cx={posX + "mm"} cy={posY + "mm"} r={size + "mm"} fill={colour}/>
+                var c = <circle  key={grid.length}  cx={posX + this.props.unit} cy={posY + this.props.unit} r={size + this.props.unit} fill={colour}/>
                     grid[grid.length] = c
                     posX += distance
             }
@@ -30,6 +34,7 @@ export default class Grid extends Component{
         }
         
         return grid
+        console.log(grid)
         
     }
  
