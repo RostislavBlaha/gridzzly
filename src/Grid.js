@@ -31,7 +31,8 @@ export default class Grid extends Component{
     const windowHeight = window.innerHeight - 105
     const sx = {width: "100%",
                 height: windowHeight,
-                backgroundImage: 'url('+ this.state.grid +')'}
+                backgroundImage: 'url('+ this.state.grid +')',
+                backgroundPosition: "2px 2px",}
 
     return (
 	 	<div style={sx}>
