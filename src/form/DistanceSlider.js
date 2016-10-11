@@ -14,9 +14,9 @@ export default class DistanceSlider extends Component{
 
     
     handleChange(evt){
-        var value = evt.target.value
+        var value = Number(evt.target.value)
         this.setState({value: value})
-        this.props.changeDistance(5)
+        this.props.changeDistance(value)
     }
  
   render() {
