@@ -9,8 +9,7 @@ class App extends Component {
         this.state = {  data: { type: "squareDot",
                                 distance: 5,
                                 unit: "mm",
-                                colour: "silver"
-                                }
+                                colour: "#B5B5B5"}
                      }
     }
     
@@ -19,6 +18,12 @@ class App extends Component {
        newData.distance = distance
        this.setState({data:newData})
        
+    }
+    
+    changeColour(colour){
+       var newData = this.state.data
+       newData.colour = colour
+       this.setState({data:newData})
     }
     
     printGrid(){
@@ -36,7 +41,8 @@ class App extends Component {
       <div  className="App"
             style={sx}>
         <Ruler/>
-        <Form changeDistance={this.changeDistance.bind(this)}/>
+        <Form   changeDistance={this.changeDistance.bind(this)}
+                changeColour={this.changeColour.bind(this)}/>
         <Grid 	type={this.state.data.type}
                 distance={this.state.data.distance}
                 unit={this.state.data.unit}

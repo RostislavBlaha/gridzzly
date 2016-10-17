@@ -24,7 +24,6 @@ export default class Grid extends Component{
 	
  
   render() {
-    console.log(this.state.grid)
     const windowWidth = window.innerWidth
     const windowHeight = window.innerHeight - 105
     const sx = {width: "100%",

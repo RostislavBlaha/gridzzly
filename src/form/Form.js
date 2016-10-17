@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { shadows, radius } from '../Styles'
-import Slider from './Slider'
-import Input from './Input'
+import Distance from './Distance'
+import Colour from './Colour'
 
 export default class Form extends Component{
     constructor(props) {
         super(props)
-        this.state = {distance:"5"}
+        this.state = {distance:"5",
+                      colourValue: 0,
+                      colour:"#B5B5B5"}
         
     }
     
@@ -18,6 +20,12 @@ export default class Form extends Component{
     changeDistance(distance){
         this.props.changeDistance(distance)
         this.setState({distance:distance})
+    }
+    
+    changeColour(value, colour){
+        this.props.changeColour(colour)
+        this.setState({ colourValue:value,
+                        colour:colour})
     }
  
   render() {
@@ -37,13 +45,11 @@ export default class Form extends Component{
     
     return (
         <div style={sx}>
-      <Slider   value={this.state.distance} 
-                changeValue={this.changeDistance.bind(this)}
-                minValue="5"
-                maxValue="25"/>
-      <Input    value={this.state.distance}
-                defaultValue="5"
-                changeValue={this.changeDistance.bind(this)}/>
+          <Distance distance={this.state.distance}
+                    changeDistance={this.changeDistance.bind(this)}/>
+      <Colour   colour={this.state.colour}
+                value={this.state.colourValue}
+                changeColour={this.changeColour.bind(this)}/>
         </div>
 	   )
   }
