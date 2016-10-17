@@ -1,8 +1,24 @@
 import React, { Component } from 'react'
 import { shadows, radius } from '../Styles'
-import DistanceSlider from './DistanceSlider'
+import Slider from './Slider'
+import Input from './Input'
 
 export default class Form extends Component{
+    constructor(props) {
+        super(props)
+        this.state = {distance:"5"}
+        
+    }
+    
+    setDistance(distance){
+        this.setState({distance:distance})
+        this.props.changeDistance(distance)
+    }
+    
+    changeDistance(distance){
+        this.props.changeDistance(distance)
+        this.setState({distance:distance})
+    }
  
   render() {
 	  const sx = {
@@ -21,7 +37,13 @@ export default class Form extends Component{
     
     return (
         <div style={sx}>
-            <DistanceSlider changeDistance={this.props.changeDistance}/>
+      <Slider   value={this.state.distance} 
+                changeValue={this.changeDistance.bind(this)}
+                minValue="5"
+                maxValue="25"/>
+      <Input    value={this.state.distance}
+                defaultValue="5"
+                changeValue={this.changeDistance.bind(this)}/>
         </div>
 	   )
   }

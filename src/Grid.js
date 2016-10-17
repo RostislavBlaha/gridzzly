@@ -12,7 +12,7 @@ export default class Grid extends Component{
     }
     
     componentWillReceiveProps(nextProps) {
-    this.drawSquareDotGrid(nextProps.distance, nextProps.unit, nextProps.colour)
+        this.drawSquareDotGrid(nextProps.distance, nextProps.unit, nextProps.colour)
     }
     
     drawSquareDotGrid(distance, unit, colour){ 
@@ -20,9 +20,7 @@ export default class Grid extends Component{
         var grid = "<svg width=\""+distance+unit+"\" height=\""+distance+unit+"\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"4mm\" cy=\"4mm\" r=\"0.3mm\" fill=\""+colour+ "\"/></svg>"
         var newGrid = prefix + window.encodeURIComponent(grid)
         this.setState({grid: newGrid })
-    }
-    
-    
+    }   
 	
  
   render() {
