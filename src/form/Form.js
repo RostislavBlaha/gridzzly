@@ -7,26 +7,13 @@ import Type from './Type/Type'
 export default class Form extends Component{
     constructor(props) {
         super(props)
-        this.state = {distance:"5",
-                      colourValue: 0,
-                      colour:"#B5B5B5"}
+        this.state = {colourValue: 0}
         
-    }
-    
-    setDistance(distance){
-        this.setState({distance:distance})
-        this.props.changeDistance(distance)
-    }
-    
-    changeDistance(distance){
-        this.props.changeDistance(distance)
-        this.setState({distance:distance})
     }
     
     changeColour(value, colour){
         this.props.changeColour(colour)
-        this.setState({ colourValue:value,
-                        colour:colour})
+        this.setState({ colourValue:value})
     }
  
   render() {
@@ -47,10 +34,11 @@ export default class Form extends Component{
     
     return (
         <div style={sx}>
-            <Type/>
-            <Distance   distance={this.state.distance}
-                        changeDistance={this.changeDistance.bind(this)}/>
-            <Colour     colour={this.state.colour}
+            <Type   type={this.props.type}
+                    changeType={this.props.changeType}/>
+            <Distance   distance={this.props.distance}
+                        changeDistance={this.props.changeDistance}/>
+            <Colour     colour={this.props.colour}
                         value={this.state.colourValue}
                         changeColour={this.changeColour.bind(this)}/>
         </div>

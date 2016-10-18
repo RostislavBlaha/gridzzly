@@ -6,7 +6,7 @@ import Form from './form/Form'
 class App extends Component {
     constructor(props){
         super(props)
-        this.state = {  data: { type: "squareDot",
+        this.state = {  data: { type: "fourDots",
                                 distance: 5,
                                 unit: "mm",
                                 colour: "#B5B5B5"}
@@ -26,6 +26,13 @@ class App extends Component {
        this.setState({data:newData})
     }
     
+    changeType(type){
+       var newData = this.state.data
+       newData.type = type
+       this.setState({data:newData})
+       
+    }
+    
     printGrid(){
         window.print()
     }
@@ -42,11 +49,15 @@ class App extends Component {
             style={sx}>
         <Ruler/>
         <Form   changeDistance={this.changeDistance.bind(this)}
-                changeColour={this.changeColour.bind(this)}/>
-        <Grid 	type={this.state.data.type}
+                changeColour={this.changeColour.bind(this)}
+                changeType={this.changeType.bind(this)}
                 distance={this.state.data.distance}
-                unit={this.state.data.unit}
-                colour={this.state.data.colour}/>
+                colour={this.state.data.colour}
+                type={this.state.data.type}/>
+        <Grid 	distance={this.state.data.distance}
+                unit={this.state.data.unit}  
+                colour={this.state.data.colour}
+                type={this.state.data.type}/>
       </div>
     )
   }
