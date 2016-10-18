@@ -31,8 +31,9 @@ export default class Grid extends Component{
     } 
     
     drawRectangle(distance, unit, colour){ 
+        const gutter = 1
         console.log("width: " + distance + unit)
-        this.setState({grid: "data:image/svg+xml;charset=UTF-8," +             window.encodeURIComponent("<svg width=\"" + distance + unit +"\" height=\"" + distance + unit +"\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"" + 0 + unit + "\" y1=\"" + (distance - 1) + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + (distance - 1) + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/><line x1=\"" + (distance - 1) + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + (distance - 1) + unit + "\" y2=\"" + distance + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/></svg>")
+        this.setState({grid: "data:image/svg+xml;charset=UTF-8," +             window.encodeURIComponent("<svg width=\"" + distance + unit +"\" height=\"" + distance + unit +"\" viewPort=\"0 0" + " " + distance + unit + " " + distance + unit + "\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"" + 0 + unit + "\" y1=\"" + (distance - gutter) + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + (distance - gutter) + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/><line x1=\"" + (distance - gutter) + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + (distance - gutter) + unit + "\" y2=\"" + distance + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/></svg>")
         })
     } 
 	
