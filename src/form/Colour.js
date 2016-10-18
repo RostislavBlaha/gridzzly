@@ -16,6 +16,11 @@ export default class Colour extends Component{
  
   render() {
 	  const sx = {
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        paddingTop: "30px",
+        paddingLeft: "30px"
 	  }
     
     return (

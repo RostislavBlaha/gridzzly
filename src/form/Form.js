@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { shadows, radius } from '../Styles'
 import Distance from './Distance'
 import Colour from './Colour'
+import Type from './Type/Type'
 
 export default class Form extends Component{
     constructor(props) {
@@ -40,16 +41,18 @@ export default class Form extends Component{
         top: "0",
         display: "flex",
         alignSelf: "center",
-        boxShadow: shadows.bottom
+        boxShadow: shadows.bottom,
+        flexDirection: "column"
 	  }
     
     return (
         <div style={sx}>
-          <Distance distance={this.state.distance}
-                    changeDistance={this.changeDistance.bind(this)}/>
-      <Colour   colour={this.state.colour}
-                value={this.state.colourValue}
-                changeColour={this.changeColour.bind(this)}/>
+            <Type/>
+            <Distance   distance={this.state.distance}
+                        changeDistance={this.changeDistance.bind(this)}/>
+            <Colour     colour={this.state.colour}
+                        value={this.state.colourValue}
+                        changeColour={this.changeColour.bind(this)}/>
         </div>
 	   )
   }
