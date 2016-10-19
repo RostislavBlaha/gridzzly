@@ -5,7 +5,8 @@ const types = { fourDots : require('./four-dots.svg'),
                 triangle : require('./triangle.svg'),
                 rectangle : require('./rectangle.svg'),
                 hexagon : require('./hexagon.svg'),
-                note : require('./note.svg')}
+                note : require('./note.svg'),
+                lines : require('./lines.svg')}
 
 export default class TypeOption extends Component{
   handleClick(){

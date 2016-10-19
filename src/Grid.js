@@ -17,6 +17,10 @@ export default class Grid extends Component{
             this.drawFourDots(nextProps.distance, nextProps.unit, nextProps.colour)
         }else if(nextProps.type==="threeDots"){
             this.drawThreeDots(nextProps.distance, nextProps.unit, nextProps.colour)
+        }else if(nextProps.type==="triangle"){                 
+            this.drawTriangle(nextProps.distance, nextProps.unit, nextProps.colour)
+        }else if(nextProps.type==="lines"){
+            this.drawLines(nextProps.distance, nextProps.unit, nextProps.colour)
         }else if(nextProps.type==="rectangle"){
             this.drawRectangle(nextProps.distance, nextProps.unit, nextProps.colour)
         }
@@ -30,10 +34,26 @@ export default class Grid extends Component{
         this.setState({grid: "data:image/svg+xml;charset=UTF-8," + window.encodeURIComponent("<svg width=\"" + distance + unit + "\" height=\"" + (distance*1.73) + unit + "\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"" + ((distance/2)-1) + unit + "\" cy=\"" + ((distance*1.73/2) - 1) + unit + "\" r=\"0.3mm\" fill=\"" + colour + "\"/><circle cx=\"" + (distance - 1) + unit + "\" cy=\"" + (distance*1.73 - 1) + unit + "\" r=\"0.3mm\" fill=\"" + colour + "\"/></svg>")})
     } 
     
+    drawTriangle(distance, unit, colour){
+        const distanceY = distance*1.73
+        const quaterX = distance/4
+        const threeQuatersX = 3*quaterX
+        const quaterY = (distanceY)/4
+        const threeQuatersY = 3*quaterY
+        this.setState({grid: "data:image/svg+xml;charset=UTF-8," + window.encodeURIComponent("<svg width=\"" + distance + unit + "\" height=\"" + (distance*1.73) + unit + "\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"> <line x1=\"" + quaterX + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + threeQuatersY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + threeQuatersY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + distance + unit + "\" y1=\"" + quaterY + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + quaterY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + distance + unit + "\" y1=\"" + threeQuatersY + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + threeQuatersY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + 0 + unit + "\" y1=\"" + threeQuatersY + unit + "\" x2=\"" + quaterX + unit + "\" y2=\"" + distanceY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + distance + unit + "\" y1=\"" + threeQuatersY + unit + "\" x2=\"" + threeQuatersX + unit + "\" y2=\"" + distanceY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> </svg>")})
+    } 
+    
+    drawLines(distance, unit, colour){ 
+        const gutter = 1
+        console.log("width: " + distance + unit)
+        this.setState({grid: "data:image/svg+xml;charset=UTF-8," +             window.encodeURIComponent("<svg width=\"" + distance + unit +"\" height=\"" + distance + unit +"\" viewPort=\"0 0 " + distance + unit + " " + distance + unit + "\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"" + 0 + unit + "\" y1=\"" + (distance - gutter) + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + (distance - gutter) + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/></svg>")
+        })
+    } 
+    
     drawRectangle(distance, unit, colour){ 
         const gutter = 1
         console.log("width: " + distance + unit)
-        this.setState({grid: "data:image/svg+xml;charset=UTF-8," +             window.encodeURIComponent("<svg width=\"" + distance + unit +"\" height=\"" + distance + unit +"\" viewPort=\"0 0" + " " + distance + unit + " " + distance + unit + "\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"" + 0 + unit + "\" y1=\"" + (distance - gutter) + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + (distance - gutter) + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/><line x1=\"" + (distance - gutter) + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + (distance - gutter) + unit + "\" y2=\"" + distance + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/></svg>")
+        this.setState({grid: "data:image/svg+xml;charset=UTF-8," +             window.encodeURIComponent("<svg width=\"" + distance + unit +"\" height=\"" + distance + unit +"\" viewPort=\"0 0 " + distance + unit + " " + distance + unit + "\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"" + 0 + unit + "\" y1=\"" + (distance - gutter) + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + (distance - gutter) + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/><line x1=\"" + (distance - gutter) + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + (distance - gutter) + unit + "\" y2=\"" + distance + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/></svg>")
         })
     } 
 	

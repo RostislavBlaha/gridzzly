@@ -23,6 +23,9 @@ export default class Type extends Component{
             <TypeOption type="triangle" 
                         selected={this.props.type==="triangle" ? true : false} 
                         changeType={this.props.changeType}/>
+            <TypeOption type="lines" 
+                        selected={this.props.type==="lines" ? true : false} 
+                        changeType={this.props.changeType}/>
             <TypeOption type="rectangle" 
                         selected={this.props.type==="rectangle" ? true : false} 
                         changeType={this.props.changeType}/>
