@@ -37,7 +37,9 @@ export default class Form extends Component{
             <Type   type={this.props.type}
                     changeType={this.props.changeType}/>
             <Distance   distance={this.props.distance}
-                        changeDistance={this.props.changeDistance}/>
+                        unit={this.props.unit} 
+                        changeDistance={this.props.changeDistance}
+                        changeUnit={this.props.changeUnit}/>
             <Colour     colour={this.props.colour}
                         value={this.state.colourValue}
                         changeColour={this.changeColour.bind(this)}/>
