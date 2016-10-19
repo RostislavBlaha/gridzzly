@@ -18,7 +18,7 @@ export default class Distance extends Component{
           <Slider   value={this.props.distance} 
                     changeValue={this.props.changeDistance}
                     minValue="5"
-                    maxValue="25"/>
+                    maxValue="20"/>
           <Input    value={this.props.distance}
                     defaultValue="5"
                     changeValue={this.props.changeDistance}/>
