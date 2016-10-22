@@ -59,7 +59,8 @@ class App extends Component {
     return (
       <div  className="App"
             style={sx}>
-        <Ruler/>
+        <Ruler 	unit={this.state.data.unit}
+				changeUnit={this.changeUnit.bind(this)}/>
         <Form   changeDistance={this.changeDistance.bind(this)}
                 changeUnit={this.changeUnit.bind(this)}
                 changeColour={this.changeColour.bind(this)}
