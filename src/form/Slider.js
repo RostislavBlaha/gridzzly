@@ -15,7 +15,8 @@ export default class Slider extends Component{
                     min={this.props.minValue} 
                     max={this.props.maxValue} 
                     type="range"
-                    value={this.props.value} 
+                    value={this.props.value}
+					step={this.props.step}
                     onChange={this.handleChange.bind(this)}/>      
         </div>
 	)

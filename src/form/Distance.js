@@ -13,15 +13,26 @@ export default class Distance extends Component{
         paddingTop: "30px",
         paddingLeft: "30px"
 	  }
+	  var values ={}
+	  if (this.props.unit==="mm"){
+		values ={	min: "5",
+			  		max: "20",
+				    step: "1",}
+	  }else{
+	  	values ={	min: "0.1875",
+			  	 	max: "1",
+				 	step: "0.0625"}
+	  }
     
     return (
         <div style={sx}>
           <Slider   value={this.props.distance} 
                     changeValue={this.props.changeDistance}
-                    minValue="5"
-                    maxValue="20"/>
+                    minValue={values.min}
+                    maxValue={values.max}
+					step={values.step}/>
           <Input    value={this.props.distance}
-                    defaultValue="5"
+                    defaultValue={values.min}
                     changeValue={this.props.changeDistance}/>
           <Unit     unit={this.props.unit}
                     changeUnit={this.props.changeUnit}/>
