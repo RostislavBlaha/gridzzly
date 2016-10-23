@@ -9,6 +9,7 @@ export default class Distance extends Component{
         width: "100%",
         display: "flex",
         flexDirection: "row",
+		justifyContent: "space-between",
 	  }
 	  var values ={}
 	  if (this.props.unit==="mm"){

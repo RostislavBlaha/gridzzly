@@ -7,12 +7,15 @@ export default class Slider extends Component{
 
   render() {
     const sx = {
+		display: "flex",
+		alignItems: "center"
 	  }
 	
 	const sliderStyle = {
 		backgroundColor: "transparent",
-		WebkitAppearance: "none",
-    	MozAppearance: "none",
+		//WebkitAppearance: "none",
+    	//MozAppearance: "none",
+		width: "225px",
 	}
 
     return (

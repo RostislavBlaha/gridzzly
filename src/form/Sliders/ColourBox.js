@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import {silver, radius} from '../../Styles'
 
 export default class ColourBox extends Component{
 
   render() {
 	  const sx = {
-        width: "120px",
-        height: "20px",
-        backgroundColor: this.props.colour
+        backgroundColor: this.props.colour,
+		width: "100px",
+		height: "36px",
+		border: "1px solid " + silver,
+		borderRadius: radius,
 	  }
 
     return (

@@ -9,6 +9,8 @@ export default class Wrapper extends Component{
     const sx={
 		display: "flex",
 		flexDirection: "column",
+		justifyContent: "space-between",
+		height: "96px",
 		padding: "18px",
 		border: "1px solid " + silver,
 		borderRadius: radius,

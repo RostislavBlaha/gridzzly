@@ -18,6 +18,7 @@ export default class Colour extends Component{
 	  const sx = {
         width: "100%",
         display: "flex",
+		justifyContent: "space-between",
         flexDirection: "row",
 	  }
 
