@@ -45,7 +45,7 @@ class App extends Component {
        
     }
     
-    printGrid(){
+    print(){
         window.print()
     }
     
@@ -68,7 +68,8 @@ class App extends Component {
                 distance={this.state.data.distance}
                 unit={this.state.data.unit} 
                 colour={this.state.data.colour}
-                type={this.state.data.type}/>
+                type={this.state.data.type}
+				print={this.print.bind(this)}/>
         <Grid 	distance={this.state.data.distance}
                 unit={this.state.data.unit}  
                 colour={this.state.data.colour}

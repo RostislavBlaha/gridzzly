@@ -17,7 +17,6 @@ export default class Form extends Component{
   render() {
 	  const sx = {
         width: "480px",
-        height: "400px",
         backgroundColor: "white",
         zIndex: "2",
         borderBottomRightRadius: radius,
@@ -40,7 +39,8 @@ export default class Form extends Component{
 						changeUnit={this.props.changeUnit}
 						colour={this.props.colour}
 						changeColour={this.changeColour.bind(this)}
-						value={this.state.colourValue}/>
+						value={this.state.colourValue}
+						print={this.props.print}/>
         </div>
 	   )
   }

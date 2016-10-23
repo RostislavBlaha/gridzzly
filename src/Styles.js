@@ -3,6 +3,7 @@ export const silver = '#c1c1c1'
 export const brown = '#483737'
 
 export const font = 'bold 16px helvetica, arial, sans-serif'
+export const largeFont = 'bold 24px helvetica, arial, sans-serif'
 
 export const colours = {
     yellow,
