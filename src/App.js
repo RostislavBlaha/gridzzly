@@ -23,10 +23,10 @@ class App extends Component {
         var newData = this.state.data
         if (newData.unit==="mm"){
             newData.unit="in"
-            newData.distance*=0.03937
+            newData.distance=Math.round(newData.distance * 393.7)/10000
         }else{
             newData.unit="mm"
-            newData.distance/=0.03937
+            newData.distance= Math.round(newData.distance / 0.03937)
         }
         console.log("distance: " + newData.distance)
         this.setState({data:newData}) 

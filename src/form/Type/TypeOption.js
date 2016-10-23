@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { silver } from '../../Styles'
 
 const types = { fourDots : require('./four-dots.svg'),
                 threeDots : require('./three-dots.svg'),
@@ -18,13 +19,37 @@ export default class TypeOption extends Component{
         width: "40px",
         height: "60px",
         background: "url(" + types[this.props.type] + ") no-repeat center",
-        backgroundColor: this.props.selected ? "silver" : "",
         cursor: "pointer",
+		opacity: this.props.selected ? "1" :" 0.8",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "flex-end"
 	  }
+	  
+	  const cornerStyle = {
+		backgroundColor: "white",
+		width: "10px",
+		height: "10px",
+		transform: "rotate(45deg)",
+		display: "flex",
+		marginBottom: "-5px",
+		borderColor: silver,
+		borderStyle: "solid none none solid",
+		borderWidth: "1px",
+	  }
+	  
+	  var corner
+	  if (this.props.selected){
+		  corner = <div style={cornerStyle}></div>
+	  }else{
+		  corner = ""
+	  }
+	  
     
     return (
         <div    style={sx}
                 onClick={this.handleClick.bind(this)}>
+			{corner}
         </div>
 	   )
   }

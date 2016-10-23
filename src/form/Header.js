@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {font, brown} from "../Styles"
 
 const logo = require('./Logo.svg')
 
@@ -10,8 +11,8 @@ export default class Header extends Component{
         display: "flex",
         flexDirection: "row",
 		justifyContent: "space-between",
-		color: "#483737",
-		font: "bold 16px helvetica, arial, sans-serif",
+		color: brown,
+		font: font,
 		paddingBottom: "20px"
 	  }
 

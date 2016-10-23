@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import {brown, font } from '../../Styles'
 
 export default class TypeOption extends Component{
 
   render() {
     const unit = this.props.unit==="mm" ? "mm" : "in"
 	  const sx = {
-        cursor: "pointer"
+        cursor: "pointer",
+		font: font,
+		color: brown,
+		opacity: "0.8",
+		paddingLeft: "5px"
 	  }
 
     return (

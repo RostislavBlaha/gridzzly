@@ -8,10 +8,16 @@ export default class Slider extends Component{
   render() {
     const sx = {
 	  }
+	
+	const sliderStyle = {
+		backgroundColor: "transparent",
+		WebkitAppearance: "none",
+    	MozAppearance: "none",
+	}
 
     return (
-        <div>
-            <input  style={sx}
+        <div style={sx}>
+            <input  style={sliderStyle}
                     min={this.props.minValue}
                     max={this.props.maxValue}
                     type="range"
