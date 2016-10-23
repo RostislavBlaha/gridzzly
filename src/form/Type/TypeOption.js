@@ -16,11 +16,10 @@ export default class TypeOption extends Component{
   render() {
 	  const sx = {
         width: "40px",
-        height: "40px",
+        height: "60px",
         background: "url(" + types[this.props.type] + ") no-repeat center",
         backgroundColor: this.props.selected ? "silver" : "",
         cursor: "pointer",
-        border: "1px solid silver"
 	  }
     
     return (

@@ -1,7 +1,9 @@
 export const yellow = '#ffd633'
+export const silver = '#c1c1c1'
 
-export const colors = {
-    yellow
+export const colours = {
+    yellow,
+	silver
 }
 
 export const shadows = {
@@ -14,7 +16,7 @@ export const radius = '4px'
 
 
 const styles = {
-    colors,
+    colours,
     shadows,
     radius
 }

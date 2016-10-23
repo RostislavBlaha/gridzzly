@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { shadows, radius } from '../Styles'
-import Distance from './Distance'
-import Colour from './Colour'
-import Type from './Type/Type'
+import Wrapper from './Wrapper'
 
 export default class Form extends Component{
     constructor(props) {
@@ -34,15 +32,15 @@ export default class Form extends Component{
     
     return (
         <div style={sx}>
-            <Type   type={this.props.type}
-                    changeType={this.props.changeType}/>
-            <Distance   distance={this.props.distance}
-                        unit={this.props.unit} 
-                        changeDistance={this.props.changeDistance}
-                        changeUnit={this.props.changeUnit}/>
-            <Colour     colour={this.props.colour}
-                        value={this.state.colourValue}
-                        changeColour={this.changeColour.bind(this)}/>
+            <Wrapper	type={this.props.type}
+						changeType={this.props.changeType}
+						distance={this.props.distance}
+						changeDistance={this.props.changeDistance}
+						unit={this.props.unit}
+						changeUnit={this.props.changeUnit}
+						colour={this.props.colour}
+						changeColour={this.changeColour.bind(this)}
+						value={this.state.colourValue}/>
         </div>
 	   )
   }

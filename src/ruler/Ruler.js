@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Units from './Units'
 import Labels from "./Labels"
-import { colors, shadows } from '../Styles'
+import { yellow, shadows } from '../Styles'
 
 export default class Ruler extends Component{
  
@@ -9,7 +9,7 @@ export default class Ruler extends Component{
 	  const sx = {
         width: "100%",
         height: "100px",
-        backgroundColor: colors.yellow,
+        backgroundColor: yellow,
         display: "flex",
         flexDirection: "column",
         boxShadow: this.props.unit==="in" ? shadows.top : shadows.bottom,

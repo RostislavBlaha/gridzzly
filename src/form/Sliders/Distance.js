@@ -4,14 +4,12 @@ import Input from './Input'
 import Unit from './Unit'
 
 export default class Distance extends Component{
- 
+
   render() {
 	  const sx = {
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        paddingTop: "30px",
-        paddingLeft: "30px"
 	  }
 	  var values ={}
 	  if (this.props.unit==="mm"){
@@ -23,10 +21,10 @@ export default class Distance extends Component{
 			  	 	max: "1",
 				 	step: "0.0625"}
 	  }
-    
+
     return (
         <div style={sx}>
-          <Slider   value={this.props.distance} 
+          <Slider   value={this.props.distance}
                     changeValue={this.props.changeDistance}
                     minValue={values.min}
                     maxValue={values.max}

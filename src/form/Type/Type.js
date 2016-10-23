@@ -8,8 +8,7 @@ export default class Type extends Component{
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        paddingTop: "30px",
-        paddingLeft: "30px"
+		justifyContent:"space-around",
 	  }
     
     return (

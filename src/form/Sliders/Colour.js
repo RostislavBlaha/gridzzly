@@ -7,25 +7,23 @@ export default class Colour extends Component{
         var colour=this.mapColour(value)
         this.props.changeColour(value,colour)
     }
-    
+
     mapColour(value){
         var increment = 172 - (value*2)
         var hexcrement = increment.toString(16)
         return "#" + hexcrement + hexcrement + hexcrement
     }
- 
+
   render() {
 	  const sx = {
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        paddingTop: "30px",
-        paddingLeft: "30px"
 	  }
-    
+
     return (
         <div style={sx}>
-          <Slider   value={this.props.value} 
+          <Slider   value={this.props.value}
                     changeValue={this.handleChange.bind(this)}
                     minValue="0"
                     maxValue="50"/>
