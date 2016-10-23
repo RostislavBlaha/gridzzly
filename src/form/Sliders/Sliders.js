@@ -14,7 +14,8 @@ export default class Wrapper extends Component{
 		padding: "18px",
 		border: "1px solid " + silver,
 		borderRadius: radius,
-		marginBottom: "30px"
+		marginBottom: "30px",
+		width: "350px"
 	}
     return (
 		<div style={sx}>
