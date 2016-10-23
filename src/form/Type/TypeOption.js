@@ -13,6 +13,7 @@ export default class TypeOption extends Component{
   handleClick(){
     this.props.changeType(this.props.type)
   }
+	
 
   render() {
 	  const sx = {
@@ -38,12 +39,7 @@ export default class TypeOption extends Component{
 		borderWidth: "1px",
 	  }
 	  
-	  var corner
-	  if (this.props.selected){
-		  corner = <div style={cornerStyle}></div>
-	  }else{
-		  corner = ""
-	  }
+	  const corner = this.props.selected ?  <div style={cornerStyle}></div> : ""
 	  
     
     return (
