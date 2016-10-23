@@ -7,7 +7,7 @@ export default class Wrapper extends Component{
 
   render() {
     const sx={
-	padding: "48px",
+	padding: "30px 48px 48px 48px",
 	display: "flex",
     flexDirection: "column",
 	}
