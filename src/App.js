@@ -12,17 +12,16 @@ class App extends Component {
             data = err
         }
         this.state = {  initialData: data,
-                        data: []}
+                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"}}
     }
     
     componentDidMount(){
-        const newData = this.state.initialData ? this.state.initialData : {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5", time: ""}
+        const newData = this.state.initialData ? this.state.initialData : {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"}
         this.setState({data:newData})  
     }
     
    saveData(data){
        var newData = data
-       newData.time = Date.now()
        this.setState({data:newData}) 
        localStorage["data_gridzzly"] = JSON.stringify(newData)
    }   
