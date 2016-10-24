@@ -88,7 +88,19 @@ export default class ActualPage extends Component{
   }
                       
   drawRectangle(distance, unit, colour){
-        this.setState({grid:"Rectangle"})
+        var grid =[]
+		const width = unit==="mm" ? 210 : 215.9
+		const height = unit==="mm" ? 297 : 279.4
+        const distanceMM = unit==="mm" ? distance : distance/0.03937
+		const rows = height/distanceMM
+		const columns = width/distanceMM
+        for (let i = 0; i < rows; i++){             
+                grid.push(<line x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} stroke-width="0.3mm" stroke={colour}/>)
+        }
+	  	for (let i = 0; i < columns; i++){             
+                grid.push(<line x1={(i * distanceMM) + "mm"} y1="0mm" x2={(i * distanceMM) + "mm"} y2={height + "mm"} stroke-width="0.3mm" stroke={colour}/>)
+        }
+        this.setState({grid: grid})
   }
                       
   drawHexagon(distance, unit, colour){
@@ -96,7 +108,19 @@ export default class ActualPage extends Component{
   }
                       
   drawNotes(distance, unit, colour){
-        this.setState({grid:"Notes"})
+        var grid =[]
+		const width = unit==="mm" ? 210 : 215.9
+        const distanceMM = unit==="mm" ? distance+5 : (distance/0.03937)+5
+		const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
+		
+        for (let i = 0; i < rows; i++){ 
+			for (let y = 0; y < 5; y++){   
+                grid.push(
+					<line x1="0mm" y1={i * distanceMM + y + "mm"} x2={width + "mm"} y2={i * distanceMM + y + "mm"} stroke-width="0.3mm" stroke={colour}/>
+				)
+			}
+        }
+        this.setState({grid: grid})
   }
 
             
