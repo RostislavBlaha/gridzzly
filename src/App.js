@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Grid from './Grid'
 import Ruler from './ruler/Ruler'
 import Form from './form/Form'
+import ActualPage from './ActualPage'
 
 class App extends Component {
     constructor(props){
@@ -12,7 +13,8 @@ class App extends Component {
             data = err
         }
         this.state = {  initialData: data,
-                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"}}
+                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"},
+                        print: false}
     }
     
     componentDidMount(){
@@ -21,6 +23,7 @@ class App extends Component {
     }
     
    saveData(data){
+       this.setState({print: false})
        var newData = data
        this.setState({data:newData}) 
        localStorage["data_gridzzly"] = JSON.stringify(newData)
@@ -41,7 +44,6 @@ class App extends Component {
             newData.unit="mm"
             newData.distance= Math.round(newData.distance / 0.03937)
         }
-        console.log("distance: " + newData.distance)
         this.saveData(newData) 
     }
     
@@ -59,7 +61,7 @@ class App extends Component {
     }
     
     print(){
-        window.print()
+        this.setState({print: true})
     }
     
     
@@ -69,24 +71,41 @@ class App extends Component {
         flexDirection: "column",
 	  }
     
+    const print = {
+        display: "none"
+	  }
+    
+    const actualPage = this.state.print ? 
+        <ActualPage     distance={this.state.data.distance}
+                        unit={this.state.data.unit}  
+                        colour={this.state.data.colour}
+                        type={this.state.data.type}
+                        print={this.state.print}/>
+     : ""
+    
     return (
-      <div  className="App"
-            style={sx}>
-        <Ruler 	unit={this.state.data.unit}
-				changeUnit={this.changeUnit.bind(this)}/>
-        <Form   changeDistance={this.changeDistance.bind(this)}
-                changeUnit={this.changeUnit.bind(this)}
-                changeColour={this.changeColour.bind(this)}
-                changeType={this.changeType.bind(this)}
-                distance={this.state.data.distance}
-                unit={this.state.data.unit} 
-                colour={this.state.data.colour}
-                type={this.state.data.type}
-				print={this.print.bind(this)}/>
-        <Grid 	distance={this.state.data.distance}
-                unit={this.state.data.unit}  
-                colour={this.state.data.colour}
-                type={this.state.data.type}/>
+      <div>
+          <div  className="App"
+                style={sx}>
+            <Ruler 	unit={this.state.data.unit}
+                    changeUnit={this.changeUnit.bind(this)}/>
+            <Form   changeDistance={this.changeDistance.bind(this)}
+                    changeUnit={this.changeUnit.bind(this)}
+                    changeColour={this.changeColour.bind(this)}
+                    changeType={this.changeType.bind(this)}
+                    distance={this.state.data.distance}
+                    unit={this.state.data.unit} 
+                    colour={this.state.data.colour}
+                    type={this.state.data.type}
+                    print={this.print.bind(this)}/>
+            <Grid 	distance={this.state.data.distance}
+                    unit={this.state.data.unit}  
+                    colour={this.state.data.colour}
+                    type={this.state.data.type}/>
+          </div>
+          <div  className="Print" style={print}>
+            {actualPage}
+          </div>
       </div>
     )
   }
