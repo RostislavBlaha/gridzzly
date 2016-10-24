@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 export default class Grid extends Component{
     constructor(props) {
         super(props)
-        this.state = {grid:""}
-        
+        this.state = {grid:""}  
     }
 	
     componentDidMount(){
@@ -28,7 +27,7 @@ export default class Grid extends Component{
             this.drawNotes(nextProps.distance, nextProps.unit, nextProps.colour)
         }
     }
-      
+                 
     drawFourDots(distance, unit, colour){
         this.setState({grid: "data:image/svg+xml;charset=UTF-8," + window.encodeURIComponent("<svg width=\"" + distance + unit + "\" height=\"" + distance + unit + "\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"4mm\" cy=\"4mm\" r=\"0.3mm\" fill=\"" + colour + "\"/></svg>")})
     }  
