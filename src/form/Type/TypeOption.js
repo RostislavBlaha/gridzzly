@@ -42,7 +42,7 @@ export default class TypeOption extends Component{
 							height: "10px",
 							transform: "rotate(45deg)",
 							display: "flex",
-							marginBottom: "-5px",
+							marginBottom: "-5.5px",
 							borderColor: silver,
 							borderStyle: "solid none none solid",
 							borderWidth: "1px"}

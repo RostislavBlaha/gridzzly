@@ -6,17 +6,31 @@ import Form from './form/Form'
 class App extends Component {
     constructor(props){
         super(props)
-        this.state = {  data: { type: "fourDots",
-                                distance: 5,
-                                unit: "mm",
-                                colour: "#B5B5B5"}
-                     }
+        try {
+            var data = JSON.parse(localStorage["data_gridzzly"])
+        } catch(err) {
+            data = err
+        }
+        this.state = {  initialData: data,
+                        data: []}
     }
+    
+    componentDidMount(){
+        const newData = this.state.initialData ? this.state.initialData : {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5", time: ""}
+        this.setState({data:newData})  
+    }
+    
+   saveData(data){
+       var newData = data
+       newData.time = Date.now()
+       this.setState({data:newData}) 
+       localStorage["data_gridzzly"] = JSON.stringify(newData)
+   }   
     
     changeDistance(distance){
        var newData = this.state.data
        newData.distance = distance
-       this.setState({data:newData})   
+       this.saveData(newData)    
     }
     
     changeUnit(){
@@ -29,19 +43,19 @@ class App extends Component {
             newData.distance= Math.round(newData.distance / 0.03937)
         }
         console.log("distance: " + newData.distance)
-        this.setState({data:newData}) 
+        this.saveData(newData) 
     }
     
     changeColour(colour){
        var newData = this.state.data
        newData.colour = colour
-       this.setState({data:newData})
+       this.saveData(newData)
     }
     
     changeType(type){
        var newData = this.state.data
        newData.type = type
-       this.setState({data:newData})
+       this.saveData(newData) 
        
     }
     
