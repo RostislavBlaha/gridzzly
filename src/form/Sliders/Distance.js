@@ -29,7 +29,8 @@ export default class Distance extends Component{
                     minValue={values.min}
                     maxValue={values.max}
 					step={values.step}/>
-          <Input    value={this.props.distance}
+          <Input    type="number"
+                    value={this.props.distance}
                     defaultValue={values.min}
                     changeValue={this.props.changeDistance}
 					unit={this.props.unit}
