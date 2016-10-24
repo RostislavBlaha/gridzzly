@@ -77,7 +77,14 @@ export default class ActualPage extends Component{
   }
                       
   drawLines(distance, unit, colour){
-        this.setState({grid:"Lines"})
+        var grid =[]
+		const width = unit==="mm" ? 210 : 215.9
+        const distanceMM = unit==="mm" ? distance : distance/0.03937
+		const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
+        for (let i = 0; i < rows; i++){             
+                grid.push(<line x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} stroke-width="0.3mm" stroke={colour}/>)
+        }
+        this.setState({grid: grid})
   }
                       
   drawRectangle(distance, unit, colour){

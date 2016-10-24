@@ -10,7 +10,7 @@ class App extends Component {
         try {
             var data = JSON.parse(localStorage["data_gridzzly"])
         } catch(err) {
-            data = err
+            data = "err"
         }
         this.state = {  initialData: data,
                         data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"},
@@ -18,7 +18,7 @@ class App extends Component {
     }
     
     componentDidMount(){
-        const newData = this.state.initialData ? this.state.initialData : {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"}
+        const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"} : this.state.initialData
         this.setState({data:newData})  
     }
     
