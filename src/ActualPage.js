@@ -43,17 +43,33 @@ export default class ActualPage extends Component{
         const distanceMM = unit==="mm" ? distance : distance/0.03937
         const columns = unit==="mm" ? 210/distanceMM : 215.9/distanceMM
         const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
-        for (let y = 0; y < (rows); y++){
+        for (let y = 0; y < rows; y++){
             for (let i = 0; i < columns; i++){
                 grid.push(<circle cx={i * distanceMM + "mm"} cy={y * distanceMM + "mm"} r="0.3mm" fill={colour}/>)
             }
         }
-        console.log(grid)
         this.setState({grid: grid})
   }
                       
   drawThreeDots(distance, unit, colour){
-        this.setState({grid:"Three Dots"})
+        var grid =[]
+        const distanceMM = unit==="mm" ? distance : distance/0.03937
+        const verticalDistance = distanceMM/1.118
+        const columns = unit==="mm" ? 210/distanceMM : 215.9/distanceMM
+        const rows = unit==="mm" ? 297/verticalDistance : 279.4/verticalDistance
+        var odd = true
+        for (let y = 0; y < rows; y++){
+            for (let i = 0; i < columns; i++){
+                
+                grid.push(odd ? <circle cx={(i * distanceMM) + (distanceMM/2) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/> : <circle cx={(i * distanceMM) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/>)
+            }
+            if (odd){
+                odd=false
+            }else{
+                odd=true
+            }
+        }
+        this.setState({grid: grid})
   }
                       
   drawTriangle(distance, unit, colour){
