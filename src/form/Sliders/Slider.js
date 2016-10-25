@@ -19,7 +19,8 @@ export default class Slider extends Component{
 	}
 
     return (
-        <div style={sx}>
+        <div 	style={sx}
+				className="slider">
             <input  style={sliderStyle}
                     min={this.props.minValue}
                     max={this.props.maxValue}
