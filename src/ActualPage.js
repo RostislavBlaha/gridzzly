@@ -45,7 +45,9 @@ export default class ActualPage extends Component{
         const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
         for (let y = 0; y < rows; y++){
             for (let i = 0; i < columns; i++){
-                grid.push(<circle cx={i * distanceMM + "mm"} cy={y * distanceMM + "mm"} r="0.3mm" fill={colour}/>)
+                grid.push(
+					<circle cx={i * distanceMM + "mm"} cy={y * distanceMM + "mm"} r="0.3mm" fill={colour}/>
+				)
             }
         }
         this.setState({grid: grid})
@@ -61,7 +63,9 @@ export default class ActualPage extends Component{
         for (let y = 0; y < rows; y++){
             for (let i = 0; i < columns; i++){
                 
-                grid.push(odd ? <circle cx={(i * distanceMM) + (distanceMM/2) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/> : <circle cx={(i * distanceMM) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/>)
+                grid.push(
+					odd ? <circle cx={(i * distanceMM) + (distanceMM/2) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/> : <circle cx={(i * distanceMM) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/>
+				)
             }
             if (odd){
                 odd=false
@@ -73,7 +77,31 @@ export default class ActualPage extends Component{
   }
                       
   drawTriangle(distance, unit, colour){
-        this.setState({grid:"Triangle"})
+        var grid =[]
+		const width = unit==="mm" ? 210 : 215.9
+		const height = unit==="mm" ? 297 : 279.4
+        const distanceMM = unit==="mm" ? distance : distance/0.03937
+		const verticalDistance = distanceMM/1.118
+		const doubleVertical = verticalDistance*2 
+		const rows = height/verticalDistance
+		const columns = width/distanceMM
+		const diagonals = rows + columns
+        for (let i = 0; i < rows; i++){                           
+				grid.push(
+					<line x1="0mm" y1={i*verticalDistance + "mm"} x2={width + "mm"} y2={i*verticalDistance + "mm"} stroke-width="0.3mm" stroke={colour}/>
+				)   		
+        }
+	  	for (let i = 0; i < diagonals; i++){                           
+				grid.push(
+					<line x1="0mm" y1={i*doubleVertical + "mm"} x2={i*distanceMM + "mm"} y2="0mm" stroke-width="0.3mm" stroke={colour}/>
+				)   			
+        }
+	  	for (let i = 0; i < diagonals; i++){                           
+				grid.push(
+					<line x1={width - i*distanceMM + "mm"} y1="0mm" x2={width + "mm"} y2={i*doubleVertical + "mm"} stroke-width="0.3mm" stroke={colour}/>
+				)   		
+        }
+	  	this.setState({grid: grid})
   }
                       
   drawLines(distance, unit, colour){
@@ -82,7 +110,9 @@ export default class ActualPage extends Component{
         const distanceMM = unit==="mm" ? distance : distance/0.03937
 		const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
         for (let i = 0; i < rows; i++){             
-                grid.push(<line x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} stroke-width="0.3mm" stroke={colour}/>)
+                grid.push(
+					<line x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} stroke-width="0.3mm" stroke={colour}/>
+				)
         }
         this.setState({grid: grid})
   }
@@ -95,16 +125,45 @@ export default class ActualPage extends Component{
 		const rows = height/distanceMM
 		const columns = width/distanceMM
         for (let i = 0; i < rows; i++){             
-                grid.push(<line x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} stroke-width="0.3mm" stroke={colour}/>)
+                grid.push(
+					<line x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} stroke-width="0.3mm" stroke={colour}/>
+				)
         }
 	  	for (let i = 0; i < columns; i++){             
-                grid.push(<line x1={(i * distanceMM) + "mm"} y1="0mm" x2={(i * distanceMM) + "mm"} y2={height + "mm"} stroke-width="0.3mm" stroke={colour}/>)
+                grid.push(
+					<line x1={(i * distanceMM) + "mm"} y1="0mm" x2={(i * distanceMM) + "mm"} y2={height + "mm"} stroke-width="0.3mm" stroke={colour}/>
+				)
         }
         this.setState({grid: grid})
   }
                       
   drawHexagon(distance, unit, colour){
-        this.setState({grid:"Hexagon"})
+	  	var grid =[]
+	  	const distanceMM = unit==="mm" ? distance : distance/0.03937
+		const width = unit==="mm" ? 210 : 215.9
+		const height = unit==="mm" ? 297 : 279.4
+        const distanceY = distanceMM*1.73
+		const thirdY = distanceY/3
+		const fivesixthY = distanceY*5/6
+		const halfY = distanceY/2
+        const halfX = distanceMM/2
+		const rows = height/distanceY
+		const columns = width/distanceMM
+        for (let y = 0; y < rows; y++){
+            for (let i = 0; i < columns; i++){
+                grid.push(
+					<g>
+						<line x1={i*distanceMM + "mm"} y1={y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={thirdY + y * distanceY + "mm"} stroke-width="0.3mm" stroke={colour}/>
+						<line x1={i*distanceMM + "mm"} y1={thirdY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} stroke-width="0.3mm" stroke={colour}/>
+						<line x1={distanceMM + i*distanceMM + "mm"} y1={thirdY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} stroke-width="0.3mm" stroke={colour}/>
+						<line x1={halfX + i*distanceMM + "mm"} y1={fivesixthY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} stroke-width="0.3mm" stroke={colour}/>
+						<line x1={halfX + i*distanceMM + "mm"} y1={fivesixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={distanceY + y * distanceY + "mm"} stroke-width="0.3mm" stroke={colour}/>
+						<line x1={halfX + i*distanceMM + "mm"} y1={fivesixthY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={distanceY + y * distanceY + "mm"} stroke-width="0.3mm" stroke={colour}/>
+					</g>
+				)
+            }
+        }
+        this.setState({grid: grid})
   }
                       
   drawNotes(distance, unit, colour){
