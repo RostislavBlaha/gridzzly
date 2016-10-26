@@ -18,11 +18,10 @@ export default class Form extends Component{
 	  const sx = {
         width: "480px",
         backgroundColor: "white",
-        zIndex: "2",
+        zIndex: "5",
         borderBottomRightRadius: radius,
         borderBottomLeftRadius: radius, 
-        position: "absolute",
-        top: "0",
+        marginTop: "-100px",
         display: "flex",
         alignSelf: "center",
         boxShadow: shadows.bottom,

@@ -86,9 +86,10 @@ export default class Grid extends Component{
  
   render() {
     const windowWidth = window.innerWidth
-    const windowHeight = window.innerHeight - 105
+    const windowHeight = window.innerHeight
     const sx = {width: "100%",
                 height: windowHeight,
+                marginTop: "-430px",
                 backgroundImage: 'url('+ this.state.grid +')',
                 backgroundPosition: "2px 2px",}
 
