@@ -69,9 +69,7 @@ class App extends Component {
     const sx = {
         display: "flex",
         flexDirection: "column",
-        width: "100%",
-        justifyItems: "center",
-        margin: "0px auto",
+
 	  }
     
     const print = {
