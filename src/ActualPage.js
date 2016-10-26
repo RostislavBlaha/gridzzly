@@ -41,13 +41,13 @@ export default class ActualPage extends Component{
   drawFourDots(distance, unit, colour){
         var grid =[]
         const distanceMM = unit==="mm" ? distance : distance/0.03937
-        const columns = unit==="mm" ? 210/distanceMM : 215.9/distanceMM
-        const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
+        const columns = unit==="mm" ? 190/distanceMM : 195.9/distanceMM
+        const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
         var key = 0
         for (let y = 0; y < rows; y++){
             for (let i = 0; i < columns; i++){
                 grid.push(
-                  <circle key={key} cx={i * distanceMM + "mm"} cy={y * distanceMM + "mm"} r="0.3mm" fill={colour}/>
+                  <circle key={key} cx={20 + i * distanceMM + "mm"} cy={20 + y * distanceMM + "mm"} r="0.3mm" fill={colour}/>
                 )
                 key += 1
             }
@@ -59,8 +59,8 @@ export default class ActualPage extends Component{
         var grid =[]
         const distanceMM = unit==="mm" ? distance : distance/0.03937
         const verticalDistance = distanceMM/1.118
-        const columns = unit==="mm" ? 210/distanceMM : 215.9/distanceMM
-        const rows = unit==="mm" ? 297/verticalDistance : 279.4/verticalDistance
+        const columns = unit==="mm" ? 190/distanceMM : 195.9/distanceMM
+        const rows = unit==="mm" ? 277/verticalDistance : 259.4/verticalDistance
         var odd = true
         var key = 0
         for (let y = 0; y < rows; y++){
@@ -82,7 +82,7 @@ export default class ActualPage extends Component{
   drawTriangle(distance, unit, colour){
     var grid =[]
 		const width = unit==="mm" ? 210 : 215.9
-		const height = unit==="mm" ? 297 : 279.4
+		const height = unit==="mm" ? 277 : 259.4
         const distanceMM = unit==="mm" ? distance : distance/0.03937
 		const verticalDistance = distanceMM/1.118
 		const doubleVertical = verticalDistance*2 
@@ -111,9 +111,9 @@ export default class ActualPage extends Component{
                       
   drawLines(distance, unit, colour){
     var grid =[]
-		const width = unit==="mm" ? 210 : 215.9
+		const width = unit==="mm" ? 190 : 195.9
     const distanceMM = unit==="mm" ? distance : distance/0.03937
-		const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
+		const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
     var key = 0
         for (let i = 0; i < rows; i++){             
             grid.push(
@@ -126,8 +126,8 @@ export default class ActualPage extends Component{
                       
   drawRectangle(distance, unit, colour){
         var grid =[]
-		const width = unit==="mm" ? 210 : 215.9
-		const height = unit==="mm" ? 297 : 279.4
+		const width = unit==="mm" ? 190 : 195.9
+		const height = unit==="mm" ? 277 : 259.4
         const distanceMM = unit==="mm" ? distance : distance/0.03937
 		const rows = height/distanceMM
 		const columns = width/distanceMM
@@ -151,8 +151,8 @@ export default class ActualPage extends Component{
   drawHexagon(distance, unit, colour){
 	  	var grid =[]
 	  	const distanceMM = unit==="mm" ? distance : distance/0.03937
-		const width = unit==="mm" ? 210 : 215.9
-		const height = unit==="mm" ? 297 : 279.4
+		const width = unit==="mm" ? 190 : 195.9
+		const height = unit==="mm" ? 277 : 259.4
         const distanceY = distanceMM*1.73
 		const thirdY = distanceY/3
 		const fivesixthY = distanceY*5/6
@@ -182,9 +182,9 @@ export default class ActualPage extends Component{
                       
   drawNotes(distance, unit, colour){
         var grid =[]
-		const width = unit==="mm" ? 210 : 215.9
-        const distanceMM = unit==="mm" ? distance+5 : (distance/0.03937)+5
-		const rows = unit==="mm" ? 297/distanceMM : 279.4/distanceMM
+		const width = unit==="mm" ? 190 : 195.9
+    const distanceMM = unit==="mm" ? distance+5 : (distance/0.03937)+5
+		const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
 		var key = 0
     for (let i = 0; i < rows; i++){ 
 			for (let y = 0; y < 5; y++){   
@@ -199,8 +199,8 @@ export default class ActualPage extends Component{
 
             
   render() {
-    const width = this.props.unit==="mm" ? 210 : 8.5
-    const height = this.props.unit==="mm" ? 297 : 11
+    const width = this.props.unit==="mm" ? 190 : 8.5
+    const height = this.props.unit==="mm" ? 277 : 11
     return (
         
         <div>
