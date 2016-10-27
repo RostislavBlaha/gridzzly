@@ -10,11 +10,11 @@ export default class Header extends Component{
         width: "100%",
         display: "flex",
         flexDirection: "row",
-		justifyContent: "space-between",
-		color: brown,
-		font: font,
-		paddingBottom: "20px"
-	  }
+		    justifyContent: "space-between",
+        color: brown,
+        font: font,
+        fontSize: window.innerWidth < 480 ? "14px" : "",
+        paddingBottom: window.innerWidth < 480 ? "10px" :"20px"}
 
 	  const claim={alignSelf: "center"}
 

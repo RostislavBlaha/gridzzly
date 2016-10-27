@@ -6,10 +6,9 @@ export default class Distance extends Component{
 
   render() {
 	  const sx = {
-        width: "100%",
         display: "flex",
         flexDirection: "row",
-		justifyContent: "space-between",
+		    justifyContent: "space-between",
 	  }
 	  var values ={}
 	  if (this.props.unit==="mm"){
@@ -28,12 +27,12 @@ export default class Distance extends Component{
                     changeValue={this.props.changeDistance}
                     minValue={values.min}
                     maxValue={values.max}
-					step={values.step}/>
+					           step={values.step}/>
           <Input    type="number"
                     value={this.props.distance}
                     defaultValue={values.min}
                     changeValue={this.props.changeDistance}
-					unit={this.props.unit}
+					           unit={this.props.unit}
                     changeUnit={this.props.changeUnit}/>
         </div>
 	   )

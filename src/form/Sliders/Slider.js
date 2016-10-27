@@ -13,9 +13,7 @@ export default class Slider extends Component{
 	
 	const sliderStyle = {
 		backgroundColor: "transparent",
-		//WebkitAppearance: "none",
-    	//MozAppearance: "none",
-		width: "225px",
+		width: window.innerWidth < 480 ? "100%" : "225px",
 	}
 
     return (
