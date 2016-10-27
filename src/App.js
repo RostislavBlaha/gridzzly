@@ -3,6 +3,7 @@ import Grid from './Grid'
 import Ruler from './ruler/Ruler'
 import Form from './form/Form'
 import ActualPage from './ActualPage'
+import Signature from './Signature'
 
 class App extends Component {
     constructor(props){
@@ -128,6 +129,7 @@ class App extends Component {
                     colour={this.state.data.colour}
                     type={this.state.data.type}
                     height={this.state.height}/>
+             <Signature/>
           </div>
           <div  className="Print" style={print}>
             {actualPage}

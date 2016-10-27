@@ -22,6 +22,7 @@ export default class Input extends Component{
 		  textAlign: "right",
 		  border: "none",
 		  font: font,
+      fontWeight: "bold",
 		  color: brown,
 		  display: "flex",
 		  

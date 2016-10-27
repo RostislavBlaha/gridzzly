@@ -13,6 +13,7 @@ export default class Header extends Component{
 		    justifyContent: "space-between",
         color: brown,
         font: font,
+        fontWeight: "bold",
         fontSize: window.innerWidth < 480 ? "14px" : "",
         paddingBottom: window.innerWidth < 480 ? "10px" :"20px"}
 

@@ -4,7 +4,6 @@ import Label from './Label'
 export default class Units extends Component{
  
   render() {
-    //const imgURL =  ? {cm} : {inch}
     const sx = {
         width: "100%",
         height: "50px",
