@@ -85,17 +85,17 @@ export default class Grid extends Component{
 	
  
   render() {
-    const windowWidth = window.innerWidth
-    const windowHeight = window.innerHeight
-    const sx = {width: "100%",
-                height: windowHeight,
-                marginTop: "-430px",
+    const sx = {width: this.props.width,
+                height: this.props.height,
+                position: "absolute",
+                top: 0,
+                left: 0,
                 backgroundImage: 'url('+ this.state.grid +')',
                 backgroundPosition: "2px 2px",}
 
     return (
 	 	<div style={sx}>
-			<svg width={windowWidth} height={windowHeight}>
+			<svg width={this.props.width} height={this.props.height}>
 			</svg>
 		</div>
 	)

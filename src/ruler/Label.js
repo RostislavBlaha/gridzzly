@@ -11,16 +11,14 @@ export default class Label extends Component{
         marginRight: "10px",
         opacity: "0.5",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: this.props.labels==="right" ? "row-reverse" : "row",
         justifyContent: "space-between",
-        //transform: this.props.type==="inches" ? "rotateY(180deg)" : ""
 	  }
     
     const unitType = this.props.type==="centimeters" ? "CENTIMETERS" : "INCHES"
     
     return (
         <div style={sx}>
-            <span>{unitType}</span>
             <span>{unitType}</span>
         </div>
 	   )

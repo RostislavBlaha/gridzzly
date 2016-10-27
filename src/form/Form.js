@@ -21,9 +21,7 @@ export default class Form extends Component{
         zIndex: "5",
         borderBottomRightRadius: radius,
         borderBottomLeftRadius: radius, 
-        marginTop: "-100px",
         display: "flex",
-        alignSelf: "center",
         boxShadow: shadows.bottom,
         flexDirection: "column"
 	  }

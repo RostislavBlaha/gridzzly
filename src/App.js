@@ -86,9 +86,10 @@ class App extends Component {
     
    render() {
     const sx = {
+        width: this.state.width,
         display: "flex",
-        flexDirection: "column",
-
+        flexDirection: "row",
+        justifyItems: "space-between"
 	  }
     
     const print = {
@@ -108,7 +109,8 @@ class App extends Component {
           <div  className="App"
                 style={sx}>
             <Ruler 	unit={this.state.data.unit}
-                    changeUnit={this.changeUnit.bind(this)}/>
+                    changeUnit={this.changeUnit.bind(this)}
+                    labels="left"/>
             <Form   changeDistance={this.changeDistance.bind(this)}
                     changeUnit={this.changeUnit.bind(this)}
                     changeColour={this.changeColour.bind(this)}
@@ -118,10 +120,15 @@ class App extends Component {
                     colour={this.state.data.colour}
                     type={this.state.data.type}
                     print={this.print.bind(this)}/>
+            <Ruler 	unit={this.state.data.unit}
+                    changeUnit={this.changeUnit.bind(this)}
+                    labels="right"/>
             <Grid 	distance={this.state.data.distance}
                     unit={this.state.data.unit}  
                     colour={this.state.data.colour}
-                    type={this.state.data.type}/>
+                    type={this.state.data.type}
+                    width={this.state.width}
+                    height={this.state.height}/>
           </div>
           <div  className="Print" style={print}>
             {actualPage}

@@ -15,8 +15,8 @@ export default class Units extends Component{
     
     return (
 	 	<div style={sx}>
-        <Label/>
-        <Label type="centimeters"/>
+        <Label labels={this.props.labels}/>
+        <Label labels={this.props.labels}type="centimeters"/>
 		</div>
 	   )
   }
