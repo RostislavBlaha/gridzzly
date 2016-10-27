@@ -15,8 +15,8 @@ class App extends Component {
         this.state = {  initialData: data,
                         data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"},
                         print: false,
-                        width: "",
-                        height: ""}
+                        width: "100%",
+                        height: "100%"}
     }
     
      updateDimensions() {
@@ -86,7 +86,7 @@ class App extends Component {
     
    render() {
     const sx = {
-        width: this.state.width,
+        width: window.innerWidth,
         display: "flex",
         flexDirection: "row",
         justifyItems: "space-between"
@@ -127,7 +127,6 @@ class App extends Component {
                     unit={this.state.data.unit}  
                     colour={this.state.data.colour}
                     type={this.state.data.type}
-                    width={this.state.width}
                     height={this.state.height}/>
           </div>
           <div  className="Print" style={print}>

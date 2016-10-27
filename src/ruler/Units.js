@@ -10,7 +10,7 @@ export default class Units extends Component{
 	  const sx = {
         width: "100%",
         height: "25px",
-        background: this.props.type==="cm" ? 'url(' + {cm}.cm + ') repeat-x' : 'url(' + {inch}.inch + ') repeat-x'
+        background: this.props.type==="cm" ? 'url(' + {cm}.cm + ') repeat-x' : 'url(' + {inch}.inch + ') repeat-x',
 	  }
 	  
     return (

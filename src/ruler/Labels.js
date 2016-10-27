@@ -12,12 +12,14 @@ export default class Units extends Component{
         flexDirection: "column",
         justifyContent: "space-around",
     }
-    
     return (
-	 	<div style={sx}>
-        <Label labels={this.props.labels}/>
-        <Label labels={this.props.labels}type="centimeters"/>
-		</div>
+        <div style={sx}>
+            <Label  labels={this.props.labels}
+                    unit={this.props.unit}/>
+            <Label  labels={this.props.labels}
+                    unit={this.props.unit}
+                    type="centimeters"/>
+        </div>	     
 	   )
   }
 }

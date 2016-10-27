@@ -10,7 +10,7 @@ export default class Ruler extends Component{
         width: "100%",
         height: "100px",
         backgroundColor: yellow,
-        display: window.innerWidth < 680 ? "none" : "flex",
+        display: (window.innerWidth < 750 && this.props.labels!=="right") || (window.innerWidth < 600 && this.props.labels==="right") ? "none" : "flex",
         flexDirection: "column",
         boxShadow: this.props.unit==="in" ? shadows.top : shadows.bottom,
         transform: this.props.unit==="in" ? "rotateX(180deg)" : "",
@@ -26,7 +26,7 @@ export default class Ruler extends Component{
 	 	<div style={sx}
          onClick={this.props.changeUnit}>
 			<Units type="in"/>
-      <Labels orientation={this.props.orientation}
+      <Labels unit={this.props.unit}
               labels={this.props.labels}/>
 			<Units type="cm"/>
 		</div>

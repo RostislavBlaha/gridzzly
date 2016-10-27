@@ -85,10 +85,10 @@ export default class Grid extends Component{
 	
  
   render() {
-    const sx = {width: this.props.width,
+    const sx = {width: "100%",
                 height: this.props.height,
                 position: "absolute",
-                top: 0,
+                top: -10,
                 left: 0,
                 backgroundImage: 'url('+ this.state.grid +')',
                 backgroundPosition: "2px 2px",}
