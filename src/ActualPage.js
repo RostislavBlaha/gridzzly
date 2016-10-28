@@ -81,7 +81,7 @@ export default class ActualPage extends Component{
                       
   drawTriangle(distance, unit, colour){
     var grid =[]
-		const width = unit==="mm" ? 210 : 215.9
+		const width = unit==="mm" ? 190 : 195.9
 		const height = unit==="mm" ? 277 : 259.4
         const distanceMM = unit==="mm" ? distance : distance/0.03937
 		const verticalDistance = distanceMM/1.118
