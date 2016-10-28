@@ -14,10 +14,11 @@ export default class Input extends Component{
 		  width: "100px",
 		  height: "36px",
 		  display: "flex",
-		  alignItems: "center"
+		  alignItems: "center",
+		  overflow: "hidden"
 	  }
 	  const inputStyle = {
-		  width: "60px",
+		  width: "50px",
 		  height: "26px",
 		  textAlign: "right",
 		  border: "none",

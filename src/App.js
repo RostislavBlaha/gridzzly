@@ -21,25 +21,24 @@ class App extends Component {
     }
     
      updateDimensions() {
-        var body = document.getElementsByTagName('body')[0]
-        var width = window.innerWidth || document.documentElement.clientWidth || body.clientWidth
-        var height = window.innerHeight || document.documentElement.clientHeight || body.clientHeight
-        this.setState({width:width, height:height})
+        //var body = this.refs.App
+        //var width = window.innerWidth || document.documentElement.clientWidth || body.clientWidth
+        //var height = window.innerHeight || document.documentElement.clientHeight || body.clientHeight
+        //this.setState({width:width, height:height})
     }
     
     componentWillMount(){
-        this.updateDimensions() 
+        //this.updateDimensions() 
     }
     
     componentDidMount(){
         const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"} : this.state.initialData
         this.setState({data:newData})
-        window.addEventListener("resize", this.updateDimensions.bind(this), true)
-        console.log(this)
+        //window.addEventListener("resize", this.updateDimensions.bind(this), true)
     }
     
     componentWillUnmount() {
-        window.removeEventListener("resize", this.updateDimensions.bind(this), false)
+        //window.removeEventListener("resize", this.updateDimensions.bind(this), false)
     }
     
    saveData(data){
@@ -108,6 +107,7 @@ class App extends Component {
     return (
       <div>
           <div  className="App"
+				ref="App"
                 style={sx}>
             <Ruler 	unit={this.state.data.unit}
                     changeUnit={this.changeUnit.bind(this)}

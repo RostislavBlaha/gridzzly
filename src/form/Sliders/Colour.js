@@ -9,7 +9,7 @@ export default class Colour extends Component{
     }
 
     mapColour(value){
-        var increment = 172 - (value*2)
+        var increment = 202 - (value*2)
         var hexcrement = increment.toString(16)
         return "#" + hexcrement + hexcrement + hexcrement
     }

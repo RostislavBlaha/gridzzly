@@ -8,10 +8,11 @@ export default class TypeOption extends Component{
 	  const sx = {
         cursor: "pointer",
 		font: font,
-    fontWeight: "bold",
+        fontWeight: "bold",
 		color: brown,
 		opacity: "0.8",
-		paddingLeft: "5px"
+		paddingLeft: "5px",
+		width: "40px"
 	  }
 
     return (

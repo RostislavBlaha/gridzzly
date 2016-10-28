@@ -47,7 +47,7 @@ export default class ActualPage extends Component{
         for (let y = 0; y < rows; y++){
             for (let i = 0; i < columns; i++){
                 grid.push(
-                  <circle key={key} cx={20 + i * distanceMM + "mm"} cy={20 + y * distanceMM + "mm"} r="0.3mm" fill={colour}/>
+                  <circle key={key} cx={i * distanceMM + "mm"} cy={ y * distanceMM + "mm"} r="0.3mm" fill={colour}/>
                 )
                 key += 1
             }

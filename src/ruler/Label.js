@@ -4,7 +4,6 @@ import {smallFont, brown} from '../Styles'
 export default class Label extends Component{
  
   render() {
-    console.log(smallFont)
 	  const sx = {
         font: smallFont,
         color: brown,
