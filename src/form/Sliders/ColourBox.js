@@ -6,7 +6,7 @@ export default class ColourBox extends Component{
   render() {
 	  const sx = {
         backgroundColor: this.props.colour,
-		width: "100px",
+		width: "110px",
 		height: "36px",
 		border: "1px solid " + silver,
 		borderRadius: radius,

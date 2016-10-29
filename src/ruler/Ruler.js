@@ -28,7 +28,7 @@ export default class Ruler extends Component{
 			<Units type="in"/>
       <Labels unit={this.props.unit}
               labels={this.props.labels}/>
-			<Units type="cm"/>
+			<Units type="mm"/>
 		</div>
 	)
   }

@@ -18,7 +18,7 @@ export default class Label extends Component{
         transitionDelay: "0.3s",
 	  }
     
-    const unitType = this.props.type==="centimeters" ? "CENTIMETERS" : "INCHES"
+    const unitType = this.props.type==="mm" ? "MILIMETRES" : "INCHES"
     
     return (
         <div style={sx}>

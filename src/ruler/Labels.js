@@ -17,7 +17,7 @@ export default class Units extends Component{
                     unit={this.props.unit}/>
             <Label  labels={this.props.labels}
                     unit={this.props.unit}
-                    type="centimeters"/>
+                    type="mm"/>
         </div>	     
 	   )
   }

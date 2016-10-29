@@ -129,19 +129,21 @@ export default class ActualPage extends Component{
 		const width = unit==="mm" ? 190 : 195.9
 		const height = unit==="mm" ? 277 : 259.4
         const distanceMM = unit==="mm" ? distance : distance/0.03937
-		const rows = height/distanceMM
-		const columns = width/distanceMM
+		const rows = Math.round(height/distanceMM)
+		const columns = Math.round(width/distanceMM)
+		const shortHeight = (rows-1)*distanceMM
+		const shortWidth = (columns-1)*distanceMM
     var key = 0
     var key2 = rows
         for (let i = 0; i < rows; i++){             
             grid.push(
-              <line key={key} x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} strokeWidth="0.3mm" stroke={colour}/>
+              <line key={key} x1="0mm" y1={(i * distanceMM) + "mm"} x2={shortWidth + "mm"} y2={(i * distanceMM) + "mm"} strokeWidth="0.3mm" stroke={colour}/>
             )
             key += 1        
         }
 	  	for (let i = 0; i < columns; i++){             
             grid.push(
-              <line key={key2} x1={(i * distanceMM) + "mm"} y1="0mm" x2={(i * distanceMM) + "mm"} y2={height + "mm"} strokeWidth="0.3mm" stroke={colour}/>
+              <line key={key2} x1={(i * distanceMM) + "mm"} y1="0mm" x2={(i * distanceMM) + "mm"} y2={shortHeight + "mm"} strokeWidth="0.3mm" stroke={colour}/>
             )
         key2 += 1
         }

@@ -15,7 +15,7 @@
    inkscape:label="Pozadí"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="triangle.svg">
+   sodipodi:docname="hexagon.svg">
   <defs
      id="defs3977" />
   <sodipodi:namedview
@@ -65,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -76,7 +76,7 @@
      transform="translate(850,298.63782)">
     <path
        style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#483737;fill-opacity:1;stroke:none;stroke-width:4;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
-       d="m -844.1875,-297.63672 a 2.0002,2.0002 0 0 0 -1.5625,1 l -4,7 a 2.0002,2.0002 0 0 0 0,1.96875 l 4,7 a 2.0002,2.0002 0 0 0 1.75,1.03125 l 8,0 a 2.0002,2.0002 0 0 0 1.75,-1.03125 l 4,-7 a 2.0002,2.0002 0 0 0 0,-1.96875 l -4,-7 a 2.0002,2.0002 0 0 0 -1.75,-1 l -8,0 a 2.0002,2.0002 0 0 0 -0.1875,0 z m 1.34375,4 5.6875,0 2.84375,5 -2.875,5 -5.625,0 -2.875,-5 2.84375,-5 z"
+       d="m -831.0011,-292.82532 a 2.0002,2.0002 0 0 0 -1,-1.5625 l -7,-4 a 2.0002,2.0002 0 0 0 -1.96875,0 l -7,4 a 2.0002,2.0002 0 0 0 -1.03125,1.75 l 0,8 a 2.0002,2.0002 0 0 0 1.03125,1.75 l 7,4 a 2.0002,2.0002 0 0 0 1.96875,0 l 7,-4 a 2.0002,2.0002 0 0 0 1,-1.75 l 0,-8 a 2.0002,2.0002 0 0 0 0,-0.1875 z m -4,1.34375 0,5.6875 -5,2.84375 -5,-2.875 0,-5.625 5,-2.875 5,2.84375 z"
        id="path3791"
        inkscape:connector-curvature="0" />
   </g>
