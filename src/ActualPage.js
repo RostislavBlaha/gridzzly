@@ -94,31 +94,35 @@ export default class ActualPage extends Component{
 	const width = unit==="mm" ? 190 : 195.9
 	const height = unit==="mm" ? 276 : 259.4
 	const distanceMM = unit==="mm" ? distance : distance/0.03937
-	const verticalDistance = distanceMM/1.118
-	const doubleVertical = verticalDistance*2 
-	const rows = height/verticalDistance
-	const columns = width/distanceMM
-	const diagonals = rows + columns
-    var key = 0
-    var key2 = rows
-    for (let i = 0; i < rows; i++){                           
-				grid.push(
-					<line key={key} x1="0mm" y1={i*verticalDistance + "mm"} x2={width + "mm"} y2={i*verticalDistance + "mm"} strokeWidth="0.2mm" stroke={colour}/>
-				)   	
-        key += 1
-    }
-      for (let i = 0; i < diagonals; i++){                           
-				grid.push(
-            <g key={key2}>
-              <line x1="0mm" y1={i*doubleVertical + "mm"} x2={i*distanceMM + "mm"} y2="0mm" strokeWidth="0.2mm" stroke={colour}/>
-              <line x1={width - i*distanceMM + "mm"} y1="0mm" x2={width + "mm"} y2={i*doubleVertical + "mm"} strokeWidth="0.2mm" stroke={colour}/> 
-            </g>
-				)  
-        key2 += 1
-      }
+	const halfDistance = distanceMM/2
+	const halfVertical = distanceMM/1.118
+	const verticalDistance = halfVertical*2 
+	const rows = Math.round(height/verticalDistance)-1
+	const columns = Math.round(width/distanceMM)-1
+	const shortHeight = (rows)*verticalDistance
+	const shortWidth = (columns)*distanceMM
+	var key = 0
+	for (let i = 0; i < rows; i++){
+		for (let y = 0; y < columns; y++){
+			grid.push(
+				<g key={key}>
+	             	<line x1={halfDistance + y*distanceMM + "mm"} y1={i * verticalDistance + "mm"} x2={y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+					<line x1={halfDistance + y*distanceMM + "mm"} y1={i * verticalDistance + "mm"} x2={distanceMM + y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+					<line x1={y*distanceMM + "mm"} y1={halfVertical + i * verticalDistance + "mm"} x2={distanceMM + y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+					<line x1={halfDistance + y*distanceMM + "mm"} y1={verticalDistance + i * verticalDistance + "mm"} x2={y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+					<line x1={halfDistance + y*distanceMM + "mm"} y1={verticalDistance + i * verticalDistance + "mm"} x2={distanceMM + y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+					<line x1={(y===0 ? halfDistance + y*distanceMM : y*distanceMM) + "mm"} y1={verticalDistance + i * verticalDistance + "mm"} x2={(y===columns-1 ? halfDistance + y*distanceMM  : distanceMM + y*distanceMM) + "mm"} y2={verticalDistance + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+				</g>
+            )
+			key += 1		
+		}
+	}
+	grid.push(<line key={key++} x1={halfDistance + "mm"} y1={0 + "mm"} x2={columns*distanceMM-halfDistance + "mm"} y2={0 + "mm"} strokeWidth="0.1mm" stroke={colour}/>)
+	console.log(grid)
+	
 	this.setState({	grid: grid,
-					width: width,
-					height: height})
+					width: shortWidth,
+					height: shortHeight})
   }
                       
   drawLines(distance, unit, colour){
