@@ -3,17 +3,6 @@ import { shadows, radius } from '../Styles'
 import Wrapper from './Wrapper'
 
 export default class Form extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {colourValue: 0}
-        
-    }
-    
-    changeColour(value, colour){
-        this.props.changeColour(colour)
-        this.setState({ colourValue:value})
-    }
- 
   render() {
 	  const sx = {
         width: window.innerWidth < 480 ? "100%" :"480px",
@@ -35,8 +24,8 @@ export default class Form extends Component{
 						unit={this.props.unit}
 						changeUnit={this.props.changeUnit}
 						colour={this.props.colour}
-						changeColour={this.changeColour.bind(this)}
-						value={this.state.colourValue}
+						changeColour={this.props.changeColour}
+						value={this.props.colourValue}
 						print={this.props.print}/>
         </div>
 	   )

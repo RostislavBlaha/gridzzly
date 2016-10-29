@@ -14,7 +14,7 @@ class App extends Component {
             data = "err"
         }
         this.state = {  initialData: data,
-                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"},
+                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5", colourValue: 0},
                         print: false,
                         width: "100%",
                         height: "100%"}
@@ -66,8 +66,9 @@ class App extends Component {
         this.saveData(newData) 
     }
     
-    changeColour(colour){
+    changeColour(value, colour){
        var newData = this.state.data
+	   newData.colourValue = value
        newData.colour = colour
        this.saveData(newData)
     }
@@ -115,6 +116,7 @@ class App extends Component {
             <Form   changeDistance={this.changeDistance.bind(this)}
                     changeUnit={this.changeUnit.bind(this)}
                     changeColour={this.changeColour.bind(this)}
+					colourValue={this.state.data.colourValue}
                     changeType={this.changeType.bind(this)}
                     distance={this.state.data.distance}
                     unit={this.state.data.unit} 
