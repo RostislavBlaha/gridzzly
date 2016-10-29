@@ -3,6 +3,17 @@ import { shadows, radius } from '../Styles'
 import Wrapper from './Wrapper'
 
 export default class Form extends Component{
+    constructor(props) {
+        super(props)
+        this.state = {colourValue: 0}
+        
+    }
+    
+    changeColour(value, colour){
+        this.props.changeColour(colour)
+        this.setState({ colourValue:value})
+    }
+ 
   render() {
 	  const sx = {
         width: window.innerWidth < 480 ? "100%" :"480px",

@@ -44,7 +44,7 @@ export default class ActualPage extends Component{
 	var grid =[]
 	const distanceMM = unit==="mm" ? distance : distance/0.03937
 	const width = unit==="mm" ? 190: 195.9
-	const height = unit==="mm" ? 277: 259
+	const height = unit==="mm" ? 276: 259
 	const columns = width/distanceMM
 	const rows = height/distanceMM
 	var key = 0
@@ -65,9 +65,9 @@ export default class ActualPage extends Component{
 	var grid =[]
 	const distanceMM = unit==="mm" ? distance : distance/0.03937
 	const width = unit==="mm" ? 190: 195.9
-	const height = unit==="mm" ? 277: 259
+	const height = unit==="mm" ? 276: 259
 	const verticalDistance = distanceMM/1.118
-	const columns = width/distanceMM
+	const columns = width/distanceMM 
 	const rows = height/verticalDistance
 	var odd = true
 	var key = 0
@@ -92,7 +92,7 @@ export default class ActualPage extends Component{
   drawTriangle(distance, unit, colour){
     var grid =[]
 	const width = unit==="mm" ? 190 : 195.9
-	const height = unit==="mm" ? 277 : 259.4
+	const height = unit==="mm" ? 276 : 259.4
 	const distanceMM = unit==="mm" ? distance : distance/0.03937
 	const verticalDistance = distanceMM/1.118
 	const doubleVertical = verticalDistance*2 
@@ -124,7 +124,7 @@ export default class ActualPage extends Component{
   drawLines(distance, unit, colour){
     var grid =[]
 	const width = unit==="mm" ? 190 : 195.9
-	const height = unit==="mm" ? 277 : 259.4
+	const height = unit==="mm" ? 276 : 259.4
     const distanceMM = unit==="mm" ? distance : distance/0.03937
 	const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
     var key = 0
@@ -171,7 +171,7 @@ export default class ActualPage extends Component{
 	  	var grid =[]
 	  	const distanceMM = unit==="mm" ? distance : distance/0.03937
 		const width = unit==="mm" ? 190 : 195.9
-		const height = unit==="mm" ? 277 : 259.4
+		const height = unit==="mm" ? 276 : 259.4
         const distanceY = distanceMM*1.73
 		const thirdY = distanceY/3
 		const fivesixthY = distanceY*5/6
@@ -204,7 +204,7 @@ export default class ActualPage extends Component{
   drawNotes(distance, unit, colour){
 	var grid =[]
 	const width = unit==="mm" ? 190 : 195.9
-	const height = unit==="mm" ? 277 : 259.4
+	const height = unit==="mm" ? 276 : 259.4
 	const distanceMM = unit==="mm" ? distance+5 : (distance/0.03937)+5
 	const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
 	var key = 0
