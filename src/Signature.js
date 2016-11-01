@@ -22,7 +22,7 @@ export default class Label extends Component{
     
     return (
         <div style={sx}>
-            designed and developed by <a style={ax} href="rostislavblaha.cz">Rostislav Blaha</a> 
+            designed and developed by <a style={ax} href="http://www.rostislavblaha.cz">Rostislav Blaha</a> 
         </div>
 	   )
   }
