@@ -25,10 +25,12 @@ export default class Ruler extends Component{
     return (
 	 	<div style={sx}
          onClick={this.props.changeUnit}>
-			<Units type="in"/>
-      <Labels unit={this.props.unit}
-              labels={this.props.labels}/>
-			<Units type="mm"/>
+			<Units    type="in"
+                labels={this.props.labels}/>
+      <Labels   unit={this.props.unit}
+                labels={this.props.labels}/>
+			<Units    type="mm"
+                labels={this.props.labels}/>
 		</div>
 	)
   }
