@@ -14,31 +14,15 @@ class App extends Component {
             data = "err"
         }
         this.state = {  initialData: data,
-                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5", colourValue: 0},
+                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", colourValue: 0},
                         print: false,
                         width: "100%",
                         height: "100%"}
     }
     
-     updateDimensions() {
-        //var body = this.refs.App
-        //var width = window.innerWidth || document.documentElement.clientWidth || body.clientWidth
-        //var height = window.innerHeight || document.documentElement.clientHeight || body.clientHeight
-        //this.setState({width:width, height:height})
-    }
-    
-    componentWillMount(){
-        //this.updateDimensions() 
-    }
-    
     componentDidMount(){
-        const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#B5B5B5"} : this.state.initialData
+        const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4"} : this.state.initialData
         this.setState({data:newData})
-        //window.addEventListener("resize", this.updateDimensions.bind(this), true)
-    }
-    
-    componentWillUnmount() {
-        //window.removeEventListener("resize", this.updateDimensions.bind(this), false)
     }
     
    saveData(data){
