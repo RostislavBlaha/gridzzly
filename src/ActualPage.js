@@ -6,7 +6,7 @@ export default class ActualPage extends Component{
         super(props)
         this.state = {	grid:"",
 					 	width:"190",
-					    height:"277"}  
+					    height:"276"}  
         
     }
           
@@ -118,7 +118,6 @@ export default class ActualPage extends Component{
 		}
 	}
 	grid.push(<line key={key++} x1={halfDistance + "mm"} y1={0 + "mm"} x2={columns*distanceMM-halfDistance + "mm"} y2={0 + "mm"} strokeWidth="0.1mm" stroke={colour}/>)
-	console.log(grid)
 	
 	this.setState({	grid: grid,
 					width: shortWidth,
@@ -172,30 +171,97 @@ export default class ActualPage extends Component{
   }
                       
   drawHexagon(distance, unit, colour){
-	  	var grid =[]
-	  	const distanceMM = unit==="mm" ? distance : distance/0.03937
+    var grid =[]
+    const distanceMM = unit==="mm" ? distance : distance/0.03937
 		const width = unit==="mm" ? 190 : 195.9
 		const height = unit==="mm" ? 276 : 259.4
-        const distanceY = distanceMM*1.73
-		const thirdY = distanceY/3
-		const fivesixthY = distanceY*5/6
+    const distanceY = distanceMM*1.73
+    const twothirdsY = distanceY*2/3
+    const sevensixthY = distanceY*7/6
 		const halfY = distanceY/2
-        const halfX = distanceMM/2
-		const rows = height/distanceY
-		const columns = width/distanceMM
+    const halfX = distanceMM/2
+    const sixthY = distanceY/6
+		const rows = Math.round(height/distanceY-1)
+		const columns = Math.round(width/distanceMM)
+    const lastColumn = columns-1
+    const lastRow = rows-1
     var key = 0
         for (let y = 0; y < rows; y++){
             for (let i = 0; i < columns; i++){
-                grid.push(
-                  <g key={key}>
-                    <line x1={i*distanceMM + "mm"} y1={y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={thirdY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-                    <line x1={i*distanceMM + "mm"} y1={thirdY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-                    <line x1={distanceMM + i*distanceMM + "mm"} y1={thirdY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-                    <line x1={halfX + i*distanceMM + "mm"} y1={fivesixthY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-                    <line x1={halfX + i*distanceMM + "mm"} y1={fivesixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={distanceY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-                    <line x1={halfX + i*distanceMM + "mm"} y1={fivesixthY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={distanceY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-                  </g>
-				        )
+                if (i!==lastColumn && y===0){
+                    grid.push(
+                      <g key={key}>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                      </g>
+                    )
+                }else if (i===lastColumn && y===0){
+                    grid.push(
+                      <g key={key}>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                      </g>
+                    )
+                }else if (i===lastColumn && y!==0 && y!==lastRow){
+                    grid.push(
+                      <g key={key}>
+                        <line x1={i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                      </g>
+                    )
+                }else if (y===lastRow && i===lastColumn){
+                      grid.push(
+                        <g key={key}>
+                        <line x1={i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>        
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                      </g>
+                    )
+                }else if (y===lastRow && i===0){
+                      grid.push(
+                        <g key={key}>
+                        <line x1={i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>  
+    
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                      </g>
+                    )
+                }else{
+                    grid.push(
+                      <g key={key}>
+                        <line x1={i*distanceMM + "mm"} y1={sixthY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={halfY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={distanceMM + i*distanceMM + "mm"} y1={halfY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={halfX + i*distanceMM + "mm"} y2={twothirdsY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                        <line x1={halfX + i*distanceMM + "mm"} y1={distanceY + y * distanceY + "mm"} x2={distanceMM + i*distanceMM + "mm"} y2={sevensixthY + y * distanceY + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+                      </g>
+                    )
+                }
                 key += 1
             
             }
