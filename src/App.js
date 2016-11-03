@@ -20,6 +20,10 @@ class App extends Component {
                         height: "100%"}
     }
     
+    shortcut('a b c', function (e) {
+      console.log('hit:', 'a b c');
+    })
+    
     componentDidMount(){
         const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4"} : this.state.initialData
         this.setState({data:newData})
@@ -92,7 +96,7 @@ class App extends Component {
     return (
       <div>
           <div  className="App"
-				ref="App"
+				        ref="App"
                 style={sx}>
             <Ruler 	unit={this.state.data.unit}
                     changeUnit={this.changeUnit.bind(this)}

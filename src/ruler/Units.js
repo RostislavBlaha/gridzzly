@@ -9,7 +9,6 @@ export default class Units extends Component{
  
   render() {
     const indent = (38-(window.innerWidth/2 + 240)%38) + "px 0px"
-    console.log(indent)
 	  const sx = {
         width: "100%",
         height: "25px",
