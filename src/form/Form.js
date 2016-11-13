@@ -25,7 +25,7 @@ export default class Form extends Component{
         boxShadow: shadows.bottom,
         flexDirection: "column"
 	  }
-    
+      
     return (
         <div style={sx}>
             <Wrapper	type={this.props.type}
@@ -34,6 +34,8 @@ export default class Form extends Component{
 						changeDistance={this.props.changeDistance}
 						unit={this.props.unit}
 						changeUnit={this.props.changeUnit}
+                        staffNr={this.props.staffNr}
+                        changeStaffNr={this.props.changeStaffNr}
 						colour={this.props.colour}
 						changeColour={this.props.changeColour}
 						value={this.props.colourValue}

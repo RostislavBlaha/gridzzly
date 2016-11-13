@@ -11,7 +11,15 @@ export default class Distance extends Component{
 		    justifyContent: "space-between",
 	  }
 	  var values ={}
-	  if (this.props.unit==="mm"){
+      if (this.props.unit==="mm" && this.props.type==="note"){
+		values ={	min: "10",
+			  		max: "30",
+				    step: "1",}
+	  }else if (this.props.unit==="in" && this.props.type==="note"){
+	  	values ={	min: "0.375",
+			  	 	max: "1.5",
+				 	step: "0.0625"}
+	  }else if (this.props.unit==="mm"){
 		values ={	min: "5",
 			  		max: "20",
 				    step: "1",}
@@ -27,7 +35,7 @@ export default class Distance extends Component{
                     changeValue={this.props.changeDistance}
                     minValue={values.min}
                     maxValue={values.max}
-					           step={values.step}/>
+				    step={values.step}/>
           <Input    type="number"
                     value={this.props.distance}
                     defaultValue={values.min}

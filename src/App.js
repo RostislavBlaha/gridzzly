@@ -14,18 +14,14 @@ class App extends Component {
             data = "err"
         }
         this.state = {  initialData: data,
-                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", colourValue: 0},
+                        data: {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", colourValue: 0, staffNr: 1},
                         print: false,
                         width: "100%",
                         height: "100%"}
     }
     
-    shortcut('a b c', function (e) {
-      console.log('hit:', 'a b c');
-    })
-    
     componentDidMount(){
-        const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4"} : this.state.initialData
+        const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", staffNr: 1,} : this.state.initialData
         this.setState({data:newData})
     }
     
@@ -39,6 +35,12 @@ class App extends Component {
     changeDistance(distance){
        var newData = this.state.data
        newData.distance = distance
+       this.saveData(newData)    
+    }
+  
+    changeStaffNr(staffNr){
+       var newData = this.state.data
+       newData.staffNr = staffNr
        this.saveData(newData)    
     }
     
@@ -90,8 +92,9 @@ class App extends Component {
                         unit={this.state.data.unit}  
                         colour={this.state.data.colour}
                         type={this.state.data.type}
+                        staffNr={this.state.data.staffNr}
                         print={this.state.print}/>
-     : ""
+        : ""
     
     return (
       <div>
@@ -105,6 +108,8 @@ class App extends Component {
                     changeUnit={this.changeUnit.bind(this)}
                     changeColour={this.changeColour.bind(this)}
 					colourValue={this.state.data.colourValue}
+                    staffNr={this.state.data.staffNr}
+                    changeStaffNr={this.changeStaffNr.bind(this)}
                     changeType={this.changeType.bind(this)}
                     distance={this.state.data.distance}
                     unit={this.state.data.unit} 
@@ -117,6 +122,7 @@ class App extends Component {
             <Grid 	distance={this.state.data.distance}
                     unit={this.state.data.unit}  
                     colour={this.state.data.colour}
+                    staffNr={this.state.data.staffNr}
                     type={this.state.data.type}
                     height={this.state.height}/>
              <Signature/>

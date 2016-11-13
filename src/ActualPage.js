@@ -36,7 +36,7 @@ export default class ActualPage extends Component{
 	}else if(nextProps.type==="hexagon"){
 		this.drawHexagon(nextProps.distance, nextProps.unit, nextProps.colour)
 	}else{
-		this.drawNotes(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawNotes(nextProps.distance, nextProps.unit, nextProps.colour, nextProps.staffNr)
 	}   
   }
    
@@ -271,21 +271,25 @@ export default class ActualPage extends Component{
 					  height: height})
   }
                       
-  drawNotes(distance, unit, colour){
-	var grid =[]
+  drawNotes(distance, unit, colour, staffNr){
+	var grid = []
 	const width = unit==="mm" ? 190 : 195.9
 	const height = unit==="mm" ? 276 : 259.4
-	const distanceMM = unit==="mm" ? distance+5 : (distance/0.03937)+5
+	const distanceMM = unit==="mm" ? distance + 11 * staffNr - 6 : distance/0.03937 + 11 * staffNr - 6
 	const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
 	var key = 0
-    for (let i = 0; i < rows; i++){ 
-			for (let y = 0; y < 5; y++){   
-                grid.push(
-					<line key={key} x1="0mm" y1={i * distanceMM + y + "mm"} x2={width + "mm"} y2={i * distanceMM + y + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-				)
-        key += 1
-		}
-	}
+    for (let z = 0; z < rows; z++){
+      for (let i = 0; i < staffNr; i++){
+          for (let y = 0; y < 5; y++){   
+            grid.push(
+              <line key={key} x1="0mm" y1={z * distanceMM + i * 11 + y + "mm"} x2={width + "mm"} y2={z * distanceMM + i * 11 + y + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+            )
+            key += 1
+          }
+      }
+    }
+    
+
 	this.setState({	grid: grid,
 				width: width,
 				height: height})

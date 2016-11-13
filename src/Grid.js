@@ -24,7 +24,7 @@ export default class Grid extends Component{
         }else if(nextProps.type==="hexagon"){
             this.drawHexagon(nextProps.distance, nextProps.unit, nextProps.colour)
         }else{
-            this.drawNotes(nextProps.distance, nextProps.unit, nextProps.colour)
+            this.drawNotes(nextProps.distance, nextProps.unit, nextProps.colour, nextProps.staffNr)
         }
     }
                  
@@ -70,15 +70,26 @@ export default class Grid extends Component{
         this.setState({grid: "data:image/svg+xml;charset=UTF-8," + window.encodeURIComponent("<svg width=\"" + distance + unit + "\" height=\"" + distanceY + unit + "\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"> <line x1=\"" + quaterX + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + quaterX + unit + "\" y2=\"" + thirdY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + quaterX + unit + "\" y1=\"" + thirdY + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + fiveTwelfthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + quaterX + unit + "\" y1=\"" + thirdY + unit + "\" x2=\"" + threeQuatersX + unit + "\" y2=\"" + halfY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + halfY + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + fiveTwelfthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + halfY + unit + "\" x2=\"" + threeQuatersX + unit + "\" y2=\"" + fiveSixthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + fiveSixthY + unit + "\" x2=\"" + quaterX + unit + "\" y2=\"" + distanceY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + quaterX + unit + "\" y1=\"" + distanceY + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + elevenTweflthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + fiveSixthY + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + elevenTweflthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> </svg>")})
     } 
         
-    drawNotes(distance, unit, colour){ 
-        const distanceY = unit==="mm" ? 5 + distance : 5 + distance/0.03937
+    drawNotes(distance, unit, colour, staffNr){ 
+        const distanceY = unit==="mm" ? distance + 11 * staffNr - 6 : distance/0.03937 + 11 * staffNr - 6
         const lineHeight = 1
-        const line1 = distanceY - 1 * lineHeight
-        const line2 = distanceY - 2 * lineHeight
-        const line3 = distanceY - 3 * lineHeight
-        const line4 = distanceY - 4 * lineHeight
-        const line5 = distanceY - 5 * lineHeight
-        this.setState({grid: "data:image/svg+xml;charset=UTF-8," +             window.encodeURIComponent("<svg width=\"5mm\" height=\"" + distanceY + "mm\" viewPort=\"0 0 5mm 10mm\" xmlns=\"http://www.w3.org/2000/svg\"> <line x1=\"0mm\" y1=\"" + line1 + "mm\" x2=\"5mm\" y2=\"" + line1 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line2 + "mm\" x2=\"5mm\" y2=\"" + line2 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line3 + "mm\" x2=\"5mm\" y2=\"" + line3 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line4 + "mm\" x2=\"5mm\" y2=\"" + line4 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line5 + "mm\" x2=\"5mm\" y2=\"" + line5 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> </svg>")
+        const line1 = 1 * lineHeight
+        const line2 = 2 * lineHeight
+        const line3 = 3 * lineHeight
+        const line4 = 4 * lineHeight
+        const line5 = 5 * lineHeight
+        const innerWidth = window.innerWidth
+        var grid = ""
+        for (let i = 0; i < staffNr; i++){
+          const line11 = i * 11  + line1
+          const line12 = i * 11  + line2
+          const line13 = i * 11  + line3
+          const line14 = i * 11  + line4
+          const line15 = i * 11  + line5
+          grid += "<line x1=\"0mm\" y1=\"" + line11 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line11 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line12 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line12 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line13 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line13 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line14 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line14 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line15 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line15 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/>"
+        }
+        
+        this.setState({grid: "data:image/svg+xml;charset=UTF-8," + window.encodeURIComponent("<svg width=\"" + innerWidth + "\" height=\"" + distanceY + "mm\" viewPort=\"0 0 5mm 10mm\" xmlns=\"http://www.w3.org/2000/svg\">" + grid + "</svg>")
         })
     }
      

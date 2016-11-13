@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Unit from './Unit'
+import Multiply from './Multiply'
 import {silver, brown, radius, font } from '../../Styles'
 
 export default class Input extends Component{
     handleChange(evt){
-        this.props.changeValue(evt.target.value)
+        this.props.changeStaffNr(evt.target.value)
     }
 
   render() {
@@ -33,10 +33,9 @@ export default class Input extends Component{
         <div style={sx}>
             <input  style={inputStyle}
 					type="text"
-                    value={this.props.value}
+                    value={this.props.staffNr}
                     onChange={this.handleChange.bind(this)}/>
-			<Unit   unit={this.props.unit}
-                    changeUnit={this.props.changeUnit}/>
+			<Multiply/>
 
         </div>
 	   )
