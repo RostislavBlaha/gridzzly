@@ -66,6 +66,14 @@ class App extends Component {
     changeType(type){
        var newData = this.state.data
        newData.type = type
+       if (type==="note"){
+         if (this.state.data.unit==="mm"){
+           newData.distance = 15
+         }else{
+           newData.distance = 0.5625
+         }
+         
+       }
        this.saveData(newData) 
        
     }

@@ -21,7 +21,7 @@ export default class Colour extends Component{
           <Slider         value={this.props.staffNr}
                           changeValue={this.handleChange.bind(this)}
                           minValue="1"
-                          maxValue="10"
+                          maxValue="9"
                           step="1"/>
           <StaffNrInput   staffNr={this.props.staffNr}
                           changeStaffNr={this.handleChange.bind(this)}/>

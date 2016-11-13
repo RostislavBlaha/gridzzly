@@ -275,14 +275,14 @@ export default class ActualPage extends Component{
 	var grid = []
 	const width = unit==="mm" ? 190 : 195.9
 	const height = unit==="mm" ? 276 : 259.4
-	const distanceMM = unit==="mm" ? distance + 11 * staffNr - 6 : distance/0.03937 + 11 * staffNr - 6
+	const distanceMM = unit==="mm" ? distance + 15 * staffNr  : distance/0.03937 + 17 * staffNr
 	const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
 	var key = 0
     for (let z = 0; z < rows; z++){
       for (let i = 0; i < staffNr; i++){
           for (let y = 0; y < 5; y++){   
             grid.push(
-              <line key={key} x1="0mm" y1={z * distanceMM + i * 11 + y + "mm"} x2={width + "mm"} y2={z * distanceMM + i * 11 + y + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+              <line key={key} x1="0mm" y1={z * distanceMM + i * 15 + y*1.6 + "mm"} x2={width + "mm"} y2={z * distanceMM + i * 15 + y*1.6 + "mm"} strokeWidth="0.1mm" stroke={colour}/>
             )
             key += 1
           }

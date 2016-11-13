@@ -70,9 +70,9 @@ export default class Grid extends Component{
         this.setState({grid: "data:image/svg+xml;charset=UTF-8," + window.encodeURIComponent("<svg width=\"" + distance + unit + "\" height=\"" + distanceY + unit + "\" viewPort=\"0 0 5mm 5mm\" xmlns=\"http://www.w3.org/2000/svg\"> <line x1=\"" + quaterX + unit + "\" y1=\"" + 0 + unit + "\" x2=\"" + quaterX + unit + "\" y2=\"" + thirdY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + quaterX + unit + "\" y1=\"" + thirdY + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + fiveTwelfthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + quaterX + unit + "\" y1=\"" + thirdY + unit + "\" x2=\"" + threeQuatersX + unit + "\" y2=\"" + halfY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + halfY + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + fiveTwelfthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + halfY + unit + "\" x2=\"" + threeQuatersX + unit + "\" y2=\"" + fiveSixthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + fiveSixthY + unit + "\" x2=\"" + quaterX + unit + "\" y2=\"" + distanceY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + quaterX + unit + "\" y1=\"" + distanceY + unit + "\" x2=\"" + 0 + unit + "\" y2=\"" + elevenTweflthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"" + threeQuatersX + unit + "\" y1=\"" + fiveSixthY + unit + "\" x2=\"" + distance + unit + "\" y2=\"" + elevenTweflthY + unit + "\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> </svg>")})
     } 
         
-    drawNotes(distance, unit, colour, staffNr){ 
-        const distanceY = unit==="mm" ? distance + 11 * staffNr - 6 : distance/0.03937 + 11 * staffNr - 6
-        const lineHeight = 1
+    drawNotes(distance, unit, colour, staffNr){
+        const lineHeight = 1.6
+        const distanceY = unit==="mm" ? distance + 15 * staffNr - 8.5 : distance/0.03937 + 15 * staffNr - 8.5
         const line1 = 1 * lineHeight
         const line2 = 2 * lineHeight
         const line3 = 3 * lineHeight
@@ -81,11 +81,11 @@ export default class Grid extends Component{
         const innerWidth = window.innerWidth
         var grid = ""
         for (let i = 0; i < staffNr; i++){
-          const line11 = i * 11  + line1
-          const line12 = i * 11  + line2
-          const line13 = i * 11  + line3
-          const line14 = i * 11  + line4
-          const line15 = i * 11  + line5
+          const line11 = i * 15  + line1
+          const line12 = i * 15  + line2
+          const line13 = i * 15  + line3
+          const line14 = i * 15  + line4
+          const line15 = i * 15  + line5
           grid += "<line x1=\"0mm\" y1=\"" + line11 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line11 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line12 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line12 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line13 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line13 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line14 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line14 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/> <line x1=\"0mm\" y1=\"" + line15 + "mm\" x2=\"" + innerWidth + "\" y2=\"" + line15 + "mm\" stroke-width=\"0.3mm\" stroke=\"" + colour + "\"/>"
         }
         
