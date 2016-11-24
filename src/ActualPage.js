@@ -191,6 +191,7 @@ export default class ActualPage extends Component{
                       
   drawNotes(distance, unit, colour, staffNr){
 	var grid = []
+
 	const width = unit==="mm" ? 190 : 195.9
 	const height = unit==="mm" ? 276 : 259.4
 	const distanceMM = unit==="mm" ? distance + 15 * staffNr  : distance/0.03937 + 17 * staffNr
@@ -208,21 +209,33 @@ export default class ActualPage extends Component{
     }
     
 
-	this.setState({	grid: grid,
-				width: width,
-				height: height})
+	this.setState({	grid: grid})
   }
 
             
   render() {
+    const sx = {
+      position: "absolute",
+
+      width: "100%", 
+      height: "100%",
+    }
+  
     return (
         
         <div>
-            <svg    version="1.1" 
+            <svg    style = {sx}
+                    version="1.1" 
                     baseProfile="full"       
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink" 
+                    xmlnsEv="http://www.w3.org/2001/xml-events" >
                 {this.state.grid}
-                <rect x="0" y="0" width="100%" height="100%" fill="url(#hex)">
+                <rect   x="0" 
+                        y="0" 
+                        width="100%" 
+                        height="100%" 
+                        fill="url(#hex)">
                 </rect>
             </svg>
         </div>
