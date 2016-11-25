@@ -171,21 +171,27 @@ export default class ActualPage extends Component{
   }
                       
   drawHexagon(distance, unit, colour){
-    var grid =[]
-    grid.push(
-        <defs>
-            <pattern id="hex" patternUnits="userSpaceOnUse" width="5mm" height="8.65mm" viewport="0 0 5mm 5mm">
-                <line x1="1.25mm" y1="0mm" x2="1.25mm" y2="2.8833333333333333mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="1.25mm" y1="2.8833333333333333mm" x2="0mm" y2="3.6041666666666665mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="1.25mm" y1="2.8833333333333333mm" x2="3.75mm" y2="4.325mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="3.75mm" y1="4.325mm" x2="5mm" y2="3.6041666666666665mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="3.75mm" y1="4.325mm" x2="3.75mm" y2="7.208333333333333mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="3.75mm" y1="7.208333333333333mm" x2="1.25mm" y2="8.65mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="1.25mm" y1="8.65mm" x2="0mm" y2="7.929166666666667mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-                <line x1="3.75mm" y1="7.208333333333333mm" x2="5mm" y2="7.929166666666667mm" stroke-width="0.3mm" stroke="#d4d4d4"></line>
-            </pattern>
-        </defs>
+    const distanceMM = unit==="mm" ? distance : distance/0.03937
+    const distanceY = distanceMM*1.73
+    const halfDistance = distanceMM/2
+    const oneSixthY = distanceY/6
+    const halfY = distanceY/2
+    const twoThirdsY = distanceY*2/3
+    const grid = (
+      <defs>
+        <pattern id="hex" patternUnits="userSpaceOnUse" width={distance + 0.1 + "mm"} height={distanceY + "mm"}>
+          <g strokeWidth="0.1mm" stroke={colour}>
+            <line x1={distanceMM + "mm"}    y1={oneSixthY + "mm"}  x2={halfDistance + "mm"} y2="0mm"/>
+            <line x1={halfDistance + "mm"}  y1="0mm"               x2="0mm"                 y2={oneSixthY + "mm"}/>
+            <line x1="0mm"                  y1={oneSixthY + "mm"}  x2="0mm"                 y2={halfY + "mm"}/>
+            <line x1="0mm"                  y1={halfY + "mm"}      x2={halfDistance + "mm"} y2={twoThirdsY + "mm"}/>
+            <line x1={halfDistance + "mm"}  y1={twoThirdsY + "mm"} x2={distanceMM + "mm"}   y2={halfY + "mm"}/>
+            <line x1={halfDistance + "mm"}  y1={twoThirdsY + "mm"} x2={halfDistance + "mm"}   y2={distanceY + "mm"}/>
+          </g>
+        </pattern>
+      </defs>
     )
+    console.log(grid)
     this.setState({ grid: grid})
   }
                       
@@ -224,12 +230,11 @@ export default class ActualPage extends Component{
     return (
         
         <div>
-            <svg    style = {sx}
+            <svg    style={sx}
                     version="1.1" 
                     baseProfile="full"       
                     xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink" 
-                    xmlnsEv="http://www.w3.org/2001/xml-events" >
+                    xmlnsXlink="http://www.w3.org/1999/xlink">
                 {this.state.grid}
                 <rect   x="0" 
                         y="0" 
