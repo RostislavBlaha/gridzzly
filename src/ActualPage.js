@@ -42,23 +42,18 @@ export default class ActualPage extends Component{
    
   drawFourDots(distance, unit, colour){
 	var grid =[]
-	const distanceMM = unit==="mm" ? distance : distance/0.03937
-	const width = unit==="mm" ? 190: 195.9
-	const height = unit==="mm" ? 276: 259
-	const columns = width/distanceMM
-	const rows = height/distanceMM
+    const columns = Math.round(420/distance)
+    const rows = Math.round(594/distance)
 	var key = 0
 	for (let y = 0; y < rows; y++){
-		for (let i = 0; i < columns; i++){
+		for (let x = 0; x < columns; x++){
 			grid.push(
-			  <circle key={key} cx={i * distanceMM + "mm"} cy={ y * distanceMM + "mm"} r="0.3mm" fill={colour}/>
+			  <circle key={key} cx={(x * distance + 0.3) + "mm"} cy={ (y * distance + 0.3) + "mm"} r="0.3mm" fill={colour}/>
 			)
 			key += 1
 		}
 	}
-	this.setState({	grid: grid,
-					width: width,
-					height: height})
+	this.setState({	grid: grid})
   }
                       
   drawThreeDots(distance, unit, colour){
@@ -194,7 +189,6 @@ export default class ActualPage extends Component{
         key += 1
       }
     }
-    console.log(grid)
     this.setState({ grid: grid})
   }
                       
