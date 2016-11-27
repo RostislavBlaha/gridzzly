@@ -117,7 +117,7 @@ export default class ActualPage extends Component{
     var key = 0
     for (let i = 0; i < rows; i++){             
         grid.push(
-          <line key={key} x1="0mm" y1={(i * distance) + "mm"} x2={594 + "mm"} y2={(i * distance) + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+          <line key={key} x1="0mm" y1={(i * distance) + "mm"} x2="420mm" y2={(i * distance) + "mm"} strokeWidth="0.1mm" stroke={colour}/>
         )
         key += 1
     }
@@ -125,31 +125,24 @@ export default class ActualPage extends Component{
   }
                       
   drawRectangle(distance, unit, colour){
-        var grid =[]
-		const width = unit==="mm" ? 190 : 195.9
-		const height = unit==="mm" ? 277 : 259.4
-        const distanceMM = unit==="mm" ? distance : distance/0.03937
-		const rows = Math.round(height/distanceMM)
-		const columns = Math.round(width/distanceMM)
-		const shortHeight = (rows-1)*distanceMM
-		const shortWidth = (columns-1)*distanceMM
+    var grid =[]
+    const columns = Math.round(420/distance) 
+	const rows = Math.round(594/distance)
     var key = 0
     var key2 = rows
-        for (let i = 0; i < rows; i++){             
-            grid.push(
-              <line key={key} x1="0mm" y1={(i * distanceMM) + "mm"} x2={shortWidth + "mm"} y2={(i * distanceMM) + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-            )
-            key += 1        
-        }
-	  	for (let i = 0; i < columns; i++){             
-            grid.push(
-              <line key={key2} x1={(i * distanceMM) + "mm"} y1="0mm" x2={(i * distanceMM) + "mm"} y2={shortHeight + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-            )
-        key2 += 1
-        }
-        this.setState({	grid: grid,
-					  	width: shortWidth,
-					  	height:shortHeight})
+    for (let i = 0; i < rows; i++){             
+        grid.push(
+          <line key={key} x1="0mm" y1={(i * distance) + "mm"} x2="420mm" y2={(i * distance) + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+        )
+        key += 1        
+    }
+    for (let i = 0; i < columns; i++){             
+        grid.push(
+          <line key={key2} x1={(i * distance) + "mm"} y1="0mm" x2={(i * distance) + "mm"} y2="594mm" strokeWidth="0.1mm" stroke={colour}/>
+        )
+    key2 += 1
+    }
+    this.setState({grid: grid})
   }
                       
   drawHexagon(distance, unit, colour){
