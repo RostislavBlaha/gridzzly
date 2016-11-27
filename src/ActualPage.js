@@ -58,18 +58,18 @@ export default class ActualPage extends Component{
                       
   drawThreeDots(distance, unit, colour){
 	var grid =[]
-	const distanceMM = unit==="mm" ? distance : distance/0.03937
-	const width = unit==="mm" ? 190: 195.9
-	const height = unit==="mm" ? 276: 259
-	const verticalDistance = distanceMM/1.118
-	const columns = width/distanceMM 
-	const rows = height/verticalDistance
+    
+	const verticalDistance = distance/1.118
+    const halfDistance = distance/2
+    
+	const columns = Math.round(420/distance) 
+	const rows = Math.round(594/verticalDistance)
 	var odd = true
 	var key = 0
 	for (let y = 0; y < rows; y++){
-		for (let i = 0; i < columns; i++){      
+		for (let x = 0; x < columns; x++){      
 			grid.push(
-			  odd ? <circle key={key} cx={(i * distanceMM) + (distanceMM/2) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/> : <circle key={key} cx={(i * distanceMM) + "mm"} cy={y * verticalDistance + "mm"} r="0.3mm" fill={colour}/>
+			  odd ? <circle key={key} cx={(x * distance + halfDistance + 0.3) + "mm"} cy={(y * verticalDistance + 0.3) + "mm"} r="0.3mm" fill={colour}/> : <circle key={key} cx={(x * distance + 0.3) + "mm"} cy={(y * verticalDistance + 0.3) + "mm"} r="0.3mm" fill={colour}/>
 			)
 			key +=1
 		}
@@ -79,9 +79,7 @@ export default class ActualPage extends Component{
 			odd=true
 		}
 	}
-	this.setState({	grid: grid,
-					width: width,
-					height: height})
+	this.setState({	grid: grid})
   }
                       
   drawTriangle(distance, unit, colour){
