@@ -64,6 +64,7 @@ export default class ActualPage extends Component{
     
 	const columns = Math.round(420/distance) 
 	const rows = Math.round(594/verticalDistance)
+    
 	var odd = true
 	var key = 0
 	for (let y = 0; y < rows; y++){
@@ -84,6 +85,7 @@ export default class ActualPage extends Component{
                       
   drawTriangle(distance, unit, colour){
     var grid =[]
+    
 	const halfDistance = distance/2
 	const halfVertical = distance/1.118
 	const verticalDistance = halfVertical*2 
@@ -109,20 +111,17 @@ export default class ActualPage extends Component{
                       
   drawLines(distance, unit, colour){
     var grid =[]
-	const width = unit==="mm" ? 190 : 195.9
-	const height = unit==="mm" ? 276 : 259.4
-    const distanceMM = unit==="mm" ? distance : distance/0.03937
-	const rows = unit==="mm" ? 277/distanceMM : 259.4/distanceMM
+    
+	const rows = Math.round(594/distance)
+    
     var key = 0
-        for (let i = 0; i < rows; i++){             
-            grid.push(
-              <line key={key} x1="0mm" y1={(i * distanceMM) + "mm"} x2={width + "mm"} y2={(i * distanceMM) + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-            )
-            key += 1
-        }
-	this.setState({	grid: grid,
-					width: width,
-					height: height})
+    for (let i = 0; i < rows; i++){             
+        grid.push(
+          <line key={key} x1="0mm" y1={(i * distance) + "mm"} x2={594 + "mm"} y2={(i * distance) + "mm"} strokeWidth="0.1mm" stroke={colour}/>
+        )
+        key += 1
+    }
+	this.setState({grid: grid})
   }
                       
   drawRectangle(distance, unit, colour){
