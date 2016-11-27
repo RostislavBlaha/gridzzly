@@ -24,19 +24,19 @@ export default class ActualPage extends Component{
     
   determineGridType(nextProps){
 	if (nextProps.type==="fourDots"){
-		this.drawFourDots(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawFourDots(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour)
 	}else if(nextProps.type==="threeDots"){
-		this.drawThreeDots(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawThreeDots(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour)
 	}else if(nextProps.type==="triangle"){                 
-		this.drawTriangle(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawTriangle(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour)
 	}else if(nextProps.type==="lines"){
-		this.drawLines(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawLines(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour)
 	}else if(nextProps.type==="rectangle"){
-		this.drawRectangle(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawRectangle(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour)
 	}else if(nextProps.type==="hexagon"){
-		this.drawHexagon(nextProps.distance, nextProps.unit, nextProps.colour)
+		this.drawHexagon(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour)
 	}else{
-		this.drawNotes(nextProps.distance, nextProps.unit, nextProps.colour, nextProps.staffNr)
+		this.drawNotes(nextProps.unit==="mm" ? nextProps.distance : nextProps.distance/0.03937, nextProps.unit, nextProps.colour, nextProps.staffNr)
 	}   
   }
    
@@ -171,26 +171,29 @@ export default class ActualPage extends Component{
   }
                       
   drawHexagon(distance, unit, colour){
-    const distanceMM = unit==="mm" ? distance : distance/0.03937
-    const distanceY = distanceMM*1.73
-    const halfDistance = distanceMM/2
+    var grid =[]
+    
+    const distanceY = distance*1.73
+    const halfDistance = distance/2
     const oneSixthY = distanceY/6
     const halfY = distanceY/2
     const twoThirdsY = distanceY*2/3
-    const grid = (
-      <defs>
-        <pattern id="hex" patternUnits="userSpaceOnUse" width={distance + 0.1 + "mm"} height={distanceY + "mm"}>
-          <g strokeWidth="0.1mm" stroke={colour}>
-            <line x1={distanceMM + "mm"}    y1={oneSixthY + "mm"}  x2={halfDistance + "mm"} y2="0mm"/>
-            <line x1={halfDistance + "mm"}  y1="0mm"               x2="0mm"                 y2={oneSixthY + "mm"}/>
-            <line x1="0mm"                  y1={oneSixthY + "mm"}  x2="0mm"                 y2={halfY + "mm"}/>
-            <line x1="0mm"                  y1={halfY + "mm"}      x2={halfDistance + "mm"} y2={twoThirdsY + "mm"}/>
-            <line x1={halfDistance + "mm"}  y1={twoThirdsY + "mm"} x2={distanceMM + "mm"}   y2={halfY + "mm"}/>
-            <line x1={halfDistance + "mm"}  y1={twoThirdsY + "mm"} x2={halfDistance + "mm"}   y2={distanceY + "mm"}/>
-          </g>
-        </pattern>
-      </defs>
-    )
+    
+    const columns = Math.round(420/distance)
+    const rows = Math.round(594/distanceY)
+    
+    var key = 0
+    for (let y = 0; y < rows; y++){
+      for (let x = 0; x < columns; x++){
+        grid.push(
+          <svg key={key} strokeWidth="0.1mm" fill="none" stroke={colour} width={ distance + "mm"} height={distanceY + "mm"} viewBox={"0 0 " + distance + " " + distanceY} x={x*distance + "mm"} y={y*distanceY + "mm"}>
+            <polyline points={distance + "," + oneSixthY + " " + halfDistance + ",0 0," + oneSixthY + " 0," + halfY + " " + halfDistance + ","+ twoThirdsY + " " + distance + "," + halfY + " " + distance + "," + oneSixthY}/>
+            <polyline points={halfDistance + ","+ twoThirdsY + " " + halfDistance + "," + distanceY}/>
+          </svg>
+        )
+        key += 1
+      }
+    }
     console.log(grid)
     this.setState({ grid: grid})
   }
@@ -225,6 +228,7 @@ export default class ActualPage extends Component{
 
       width: "100%", 
       height: "100%",
+      overflow: "hidden"
     }
   
     return (
@@ -233,15 +237,8 @@ export default class ActualPage extends Component{
             <svg    style={sx}
                     version="1.1" 
                     baseProfile="full"       
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink">
+                    xmlns="http://www.w3.org/2000/svg">
                 {this.state.grid}
-                <rect   x="0" 
-                        y="0" 
-                        width="100%" 
-                        height="100%" 
-                        fill="url(#hex)">
-                </rect>
             </svg>
         </div>
 	   )
