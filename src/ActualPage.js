@@ -193,16 +193,15 @@ export default class ActualPage extends Component{
       overflow: "hidden"
     }
   
-    return (
-        
-        <div>
-            <svg    style={sx}
-                    version="1.1" 
-                    baseProfile="full"       
-                    xmlns="http://www.w3.org/2000/svg">
-                {this.state.grid}
-            </svg>
-        </div>
-	   )
+    return (   
+      <div>
+        <svg    style={sx}
+                version="1.1" 
+                baseProfile="full"       
+                xmlns="http://www.w3.org/2000/svg">
+          {this.state.grid}
+        </svg>
+      </div>
+    )
   }
 }
