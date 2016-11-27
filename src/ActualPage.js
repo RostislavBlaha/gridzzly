@@ -84,37 +84,27 @@ export default class ActualPage extends Component{
                       
   drawTriangle(distance, unit, colour){
     var grid =[]
-	const width = unit==="mm" ? 190 : 195.9
-	const height = unit==="mm" ? 276 : 259.4
-	const distanceMM = unit==="mm" ? distance : distance/0.03937
-	const halfDistance = distanceMM/2
-	const halfVertical = distanceMM/1.118
+	const halfDistance = distance/2
+	const halfVertical = distance/1.118
 	const verticalDistance = halfVertical*2 
-	const rows = Math.round(height/verticalDistance)-1
-	const columns = Math.round(width/distanceMM)-1
-	const shortHeight = (rows)*verticalDistance
-	const shortWidth = (columns)*distanceMM
+    
+    const columns = Math.round(420/distance) 
+	const rows = Math.round(594/verticalDistance)
+
 	var key = 0
-	for (let i = 0; i < rows; i++){
-		for (let y = 0; y < columns; y++){
+	for (let y = 0; y < rows; y++){
+		for (let x = 0; x < columns; x++){
 			grid.push(
-				<g key={key}>
-	             	<line x1={halfDistance + y*distanceMM + "mm"} y1={i * verticalDistance + "mm"} x2={y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-					<line x1={halfDistance + y*distanceMM + "mm"} y1={i * verticalDistance + "mm"} x2={distanceMM + y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-					<line x1={y*distanceMM + "mm"} y1={halfVertical + i * verticalDistance + "mm"} x2={distanceMM + y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-					<line x1={halfDistance + y*distanceMM + "mm"} y1={verticalDistance + i * verticalDistance + "mm"} x2={y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-					<line x1={halfDistance + y*distanceMM + "mm"} y1={verticalDistance + i * verticalDistance + "mm"} x2={distanceMM + y*distanceMM + "mm"} y2={halfVertical + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-					<line x1={(y===0 ? halfDistance + y*distanceMM : y*distanceMM) + "mm"} y1={verticalDistance + i * verticalDistance + "mm"} x2={(y===columns-1 ? halfDistance + y*distanceMM  : distanceMM + y*distanceMM) + "mm"} y2={verticalDistance + i * verticalDistance + "mm"} strokeWidth="0.1mm" stroke={colour}/>
-				</g>
+              <svg key={key} strokeWidth="0.1mm" fill="none" stroke={colour} width={ distance + "mm"} height={verticalDistance + "mm"} viewBox={"0 0 " + distance + " " + verticalDistance} x={x*distance + "mm"} y={y*verticalDistance + "mm"}>
+                <polyline points={"0,0 " + distance + ",0"}/>
+                <polyline points={"0," + halfVertical + " " + halfDistance + ",0 " + distance + "," + halfVertical + " 0," + halfVertical + " " + halfDistance + "," + verticalDistance + " " + distance + "," + halfVertical}/>
+              </svg>
             )
 			key += 1		
 		}
 	}
-	grid.push(<line key={key++} x1={halfDistance + "mm"} y1={0 + "mm"} x2={columns*distanceMM-halfDistance + "mm"} y2={0 + "mm"} strokeWidth="0.1mm" stroke={colour}/>)
 	
-	this.setState({	grid: grid,
-					width: shortWidth,
-					height: shortHeight})
+	this.setState({	grid: grid})
   }
                       
   drawLines(distance, unit, colour){
