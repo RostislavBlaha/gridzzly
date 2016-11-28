@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="author" content="Rostislav Blaha">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The easiest way to create custom grid paper printable. Available options are: dot grid, isometric dot grid, lines, squares, isometric grid, hexagons, and music staff.">  
+    <meta name="description" content="The easiest way to create custom grid paper printable. Available options are: dot grid, isometric dot grid, lines, graph, isometric grid, hexagons, and music staff. Supported paper formats are A2, A3, A4, A5, Legal, Letter, Tabloid and many others.">  
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png">
     <style media="print">
         .App{
@@ -41,7 +41,7 @@
           border: none;
           border-radius: 2px;
           background:  #483737 url(data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjEzcHgiIGhlaWdodD0iMjJweCIgdmlld1BvcnQ9IjAgMCAxM3B4IDIycHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8bGluZSB4MT0iMC41cHgiIAogICAgICAgICAgeTE9IjAiIAogICAgICAgICAgeDI9IjAuNXB4IgogICAgICAgICAgeTI9IjIycHgiCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjFweCIgCiAgICAgICAgICBzdHJva2U9IndoaXRlIgoJCSAgc3Ryb2tlLW9wYWNpdHk9IjAuMyIvPgoJPGxpbmUgeDE9IjQuNXB4IiAKICAgICAgICAgIHkxPSIwIiAKICAgICAgICAgIHgyPSI0LjVweCIKICAgICAgICAgIHkyPSIyMnB4IgogICAgICAgICAgc3Ryb2tlLXdpZHRoPSIxcHgiIAogICAgICAgICAgc3Ryb2tlPSJ3aGl0ZSIKCQkgIHN0cm9rZS1vcGFjaXR5PSIwLjMiLz4KCTxsaW5lIHgxPSI4LjVweCIgCiAgICAgICAgICB5MT0iMCIgCiAgICAgICAgICB4Mj0iOC41cHgiCiAgICAgICAgICB5Mj0iMjJweCIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iMXB4IiAKICAgICAgICAgIHN0cm9rZT0id2hpdGUiCgkJICBzdHJva2Utb3BhY2l0eT0iMC4zIi8+Cgk8bGluZSB4MT0iMTIuNXB4IiAKICAgICAgICAgIHkxPSIwIiAKICAgICAgICAgIHgyPSIxMi41cHgiCiAgICAgICAgICB5Mj0iMjJweCIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iMXB4IiAKICAgICAgICAgIHN0cm9rZT0id2hpdGUiCgkJICBzdHJva2Utb3BhY2l0eT0iMC4zIi8+CiAgICAKPC9zdmc+);
-         background-repeat:no-repeat;
+          background-repeat:no-repeat;
           background-position: center;
           cursor: pointer;
         }
@@ -52,7 +52,7 @@
           width: 27px;
           border-radius: 2px;
           background:  #483737 url(data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjEzcHgiIGhlaWdodD0iMjJweCIgdmlld1BvcnQ9IjAgMCAxM3B4IDIycHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8bGluZSB4MT0iMC41cHgiIAogICAgICAgICAgeTE9IjAiIAogICAgICAgICAgeDI9IjAuNXB4IgogICAgICAgICAgeTI9IjIycHgiCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjFweCIgCiAgICAgICAgICBzdHJva2U9IndoaXRlIgoJCSAgc3Ryb2tlLW9wYWNpdHk9IjAuMyIvPgoJPGxpbmUgeDE9IjQuNXB4IiAKICAgICAgICAgIHkxPSIwIiAKICAgICAgICAgIHgyPSI0LjVweCIKICAgICAgICAgIHkyPSIyMnB4IgogICAgICAgICAgc3Ryb2tlLXdpZHRoPSIxcHgiIAogICAgICAgICAgc3Ryb2tlPSJ3aGl0ZSIKCQkgIHN0cm9rZS1vcGFjaXR5PSIwLjMiLz4KCTxsaW5lIHgxPSI4LjVweCIgCiAgICAgICAgICB5MT0iMCIgCiAgICAgICAgICB4Mj0iOC41cHgiCiAgICAgICAgICB5Mj0iMjJweCIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iMXB4IiAKICAgICAgICAgIHN0cm9rZT0id2hpdGUiCgkJICBzdHJva2Utb3BhY2l0eT0iMC4zIi8+Cgk8bGluZSB4MT0iMTIuNXB4IiAKICAgICAgICAgIHkxPSIwIiAKICAgICAgICAgIHgyPSIxMi41cHgiCiAgICAgICAgICB5Mj0iMjJweCIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iMXB4IiAKICAgICAgICAgIHN0cm9rZT0id2hpdGUiCgkJICBzdHJva2Utb3BhY2l0eT0iMC4zIi8+CiAgICAKPC9zdmc+);
-            background-repeat:no-repeat;
+          background-repeat:no-repeat;
           background-position: center;
           cursor: pointer;
         }
@@ -63,12 +63,12 @@
         }
 
         input[type=range]::-moz-range-track {
-           height: 4px;
+          height: 4px;
           background: #6d5f5f;
         }
 
         input[type=range]::-ms-track {
-           height: 4px;
+          height: 4px;
           background: #6d5f5f;
         }
       
