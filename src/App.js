@@ -4,6 +4,11 @@ import Ruler from './ruler/Ruler'
 import Form from './form/Form'
 import ActualPage from './ActualPage'
 import Signature from './Signature'
+import ReactGA from 'react-ga'
+
+
+ReactGA.initialize('UA-49115727-1')
+
 
 class App extends Component {
     constructor(props){
@@ -80,6 +85,11 @@ class App extends Component {
     
     print(){
         this.setState({print: true})
+        ReactGA.event({
+            category: 'Navigation',
+            action: 'Print',
+            label: this.state.data,
+        })
     }
     
     
