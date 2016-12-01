@@ -4,6 +4,11 @@ import Ruler from './ruler/Ruler'
 import Form from './form/Form'
 import ActualPage from './ActualPage'
 import Signature from './Signature'
+import ReactGA from 'react-ga'
+
+
+ReactGA.initialize('UA-49115727-1')
+
 
 class App extends Component {
     constructor(props){
@@ -15,9 +20,7 @@ class App extends Component {
         }
         this.state = {  initialData: data,
                         data: {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", colourValue: 0, staffNr: 1},
-                        print: false,
-                        width: "100%",
-                        height: "100%"}
+                        print: false}
     }
     
     componentDidMount(){
@@ -80,6 +83,11 @@ class App extends Component {
     
     print(){
         this.setState({print: true})
+        ReactGA.event({
+            category: 'Navigation',
+            action: 'Print',
+            label: this.state.data,
+        })
     }
     
     
@@ -131,8 +139,7 @@ class App extends Component {
                     unit={this.state.data.unit}  
                     colour={this.state.data.colour}
                     staffNr={this.state.data.staffNr}
-                    type={this.state.data.type}
-                    height={this.state.height}/>
+                    type={this.state.data.type}/>
              <Signature/>
           </div>
           <div  className="Print" style={print}>

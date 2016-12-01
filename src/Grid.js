@@ -97,7 +97,7 @@ export default class Grid extends Component{
  
   render() {
     const sx = {width: "100%",
-                height: this.props.height,
+                height: "100%",
                 position: "absolute",
                 top: -10,
                 left: 0,
@@ -106,7 +106,7 @@ export default class Grid extends Component{
 
     return (
 	 	<div style={sx}>
-			<svg width={this.props.width} height={this.props.height}>
+			<svg  height="100%">
 			</svg>
 		</div>
 	)
