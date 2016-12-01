@@ -17,7 +17,7 @@ export default class Form extends Component{
   render() {
 	  const sx = {
         minWidth: window.innerWidth < 480 ? "" :"480px",
-        width: "100%",
+        width: window.innerWidth < 480 ? "100%" :"480px",
         backgroundColor: "white",
         zIndex: "5",
         borderBottomRightRadius: radius,
