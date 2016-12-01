@@ -20,9 +20,7 @@ class App extends Component {
         }
         this.state = {  initialData: data,
                         data: {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", colourValue: 0, staffNr: 1},
-                        print: false,
-                        width: "100%",
-                        height: "100%"}
+                        print: false}
     }
     
     componentDidMount(){
@@ -141,8 +139,7 @@ class App extends Component {
                     unit={this.state.data.unit}  
                     colour={this.state.data.colour}
                     staffNr={this.state.data.staffNr}
-                    type={this.state.data.type}
-                    height={this.state.height}/>
+                    type={this.state.data.type}/>
              <Signature/>
           </div>
           <div  className="Print" style={print}>
