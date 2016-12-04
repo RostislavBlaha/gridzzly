@@ -84,7 +84,12 @@ class App extends Component {
     
     print(){
         this.setState({print: true})
-        ReactGA('Action', 'Print', this.state.data)
+        ReactGA.event({
+          category: 'Action',
+          action: 'Print',
+          value: this.state.data.distance,
+          label: this.state.data.type
+        })
     }
     
     
