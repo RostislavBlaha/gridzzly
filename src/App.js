@@ -4,10 +4,7 @@ import Ruler from './ruler/Ruler'
 import Form from './form/Form'
 import ActualPage from './ActualPage'
 import Signature from './Signature'
-import ReactGA from 'react-ga'
-
-
-ReactGA.initialize('UA-49115727-1')
+import ReactGA from 'react-ga';
 
 
 class App extends Component {
@@ -21,7 +18,11 @@ class App extends Component {
         this.state = {  initialData: data,
                         data: {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", colourValue: 0, staffNr: 1},
                         print: false}
+        ReactGA.initialize('UA-49115727-1')
+        ReactGA.pageview(window.location.pathname)
     }
+  
+
     
     componentDidMount(){
         const newData = (this.state.initialData==="err") ? {type: "fourDots", distance: 5, unit: "mm", colour: "#d4d4d4", staffNr: 1,} : this.state.initialData
@@ -83,11 +84,7 @@ class App extends Component {
     
     print(){
         this.setState({print: true})
-        ReactGA.event({
-            category: 'Navigation',
-            action: 'Print',
-            label: this.state.data,
-        })
+        ReactGA('Action', 'Print', this.state.data)
     }
     
     
